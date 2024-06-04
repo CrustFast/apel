@@ -33,12 +33,12 @@
   <div class="min-h-full">
     <x-navbar></x-navbar>
     <x-header></x-header>
-    <x-form></x-form>
+    @livewire('form')
     <x-footer></x-footer>
   </div>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="//unpkg.com/alpinejs" defer></script>
   @livewireScripts
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Removed the duplicate Alpine.js inclusion -->
 </body>
 
 </html>

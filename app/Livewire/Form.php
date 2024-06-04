@@ -1,19 +1,16 @@
 <?php
-namespace App\Http\Livewire;
+
+namespace App\Livewire;
 
 use Livewire\Component;
 
-class FormComponent extends Component
+class Form extends Component
 {
-    public $selectedOption = '';
+    public $selectedOption;
+    public $selectedIdentity;
 
     public function render()
     {
         return view('livewire.form');
-    }
-
-    public function showUploadSection()
-    {
-        return $this->selectedOption === 'kerusakan';
     }
 }
