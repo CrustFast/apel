@@ -87,22 +87,27 @@
         <div class="sm:col-span-2">
           <label for="identitas" class="block text-sm font-semibold leading-6 text-gray-900 text-center mt-6">Identitas</label>
           <div class="mt-3 space-y-6">
-            <div class="flex justify-center">
-              <div class="flex items-center gap-x-3">
-                <input id="identitas-lengkap" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
-                <label for="identitas-lengkap" class="block text-sm font-medium leading-6 text-gray-900">Lengkap</label>
-
-                <input id="peserta-diklat" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
-                <label for="peserta-diklat" class="block text-sm font-medium leading-6 text-gray-900">Peserta Diklat</label>
-
-                <input id="peserta-pkl" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
-                <label for="peserta-pkl" class="block text-sm font-medium leading-6 text-gray-900">Peserta PKL</label>
-
-                <input id="pengguna-fasilitas" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
-                <label for="pengguna-fasilitas" class="block text-sm font-medium leading-6 text-gray-900">Pengguna Fasilitas</label>
+            <div class="flex justify-start">
+              <div class="flex flex-col md:flex-row items-start gap-3">
+                <div class="flex items-center gap-x-2">
+                  <input id="identitas-lengkap" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <label for="identitas-lengkap" class="block text-sm font-medium leading-6 text-gray-900">Lengkap</label>
+                </div>
+                <div class="flex items-center gap-x-2">
+                  <input id="peserta-diklat" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <label for="peserta-diklat" class="block text-sm font-medium leading-6 text-gray-900">Peserta Diklat</label>
+                </div>
+                <div class="flex items-center gap-x-2">
+                  <input id="peserta-pkl" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <label for="peserta-pkl" class="block text-sm font-medium leading-6 text-gray-900">Peserta PKL</label>
+                </div>
+                <div class="flex items-center gap-x-2">
+                  <input id="pengguna-fasilitas" name="push-notifications" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <label for="pengguna-fasilitas" class="block text-sm font-medium leading-6 text-gray-900">Pengguna Fasilitas</label>
+                </div>
               </div>
             </div>
-          </div>
+          </div>          
         </div>
 
         <div class="sm:col-span-2 mt-6">
