@@ -16,37 +16,39 @@
             <div class="flex justify-center">
               <div class="flex flex-col sm:flex-row items-start gap-x-3 gap-y-3">
                 <div class="flex items-center">
-                  <input wire:model="selectedOption" id="pengaduan" name="push-notifications" type="radio" value="pengaduan" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <input id="pengaduan" name="push-notifications" type="radio" value="pengaduan" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
                   <label for="pengaduan" class="block text-sm font-medium leading-6 text-gray-900 ml-2 text-left">Pengaduan</label>
                 </div>
                 <div class="flex items-center">
-                  <input wire:model="selectedOption" id="permintaan-informasi" name="push-notifications" type="radio" value="permintaan-informasi" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <input id="permintaan-informasi" name="push-notifications" type="radio" value="permintaan-informasi" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
                   <label for="permintaan-informasi" class="block text-sm font-medium leading-6 text-gray-900 ml-2 text-left">Permintaan Informasi</label>
                 </div>
                 <div class="flex items-center">
-                  <input wire:model="selectedOption" id="saran" name="push-notifications" type="radio" value="saran" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <input id="saran" name="push-notifications" type="radio" value="saran" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
                   <label for="saran" class="block text-sm font-medium leading-6 text-gray-900 ml-2 text-left">Saran</label>
                 </div>
                 <div class="flex items-center">
-                  <input wire:model="selectedOption" id="kerusakan" name="push-notifications" type="radio" value="kerusakan" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+                  <input id="kerusakan" name="push-notifications" type="radio" value="kerusakan" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
                   <label for="kerusakan" class="block text-sm font-medium leading-6 text-gray-900 ml-2 text-left">Kerusakan</label>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div>
+
+        <!-- Form Elements to be toggled -->
+        <div id="tanggal-pengaduan-section">
           <label for="tanggal-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Tanggal Pengaduan</label>
           <div class="mt-2.5 relative max-w-sm">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
               </svg>
             </div>
-            <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+            <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
           </div>
         </div>
-        <div>
+        <div id="jenis-layanan-section">
           <label for="jenis-layanan" class="block text-sm font-semibold leading-6 text-gray-900">Pilih Jenis Layanan</label>
           <div class="mt-2.5">
             <select id="jenis-layanan" name="jenis-layanan" autocomplete="jenis-layanan" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
@@ -56,7 +58,7 @@
             </select>
           </div>
         </div>
-        <div>
+        <div id="tipe-section">
           <label for="tipe" class="block text-sm font-semibold leading-6 text-gray-900">Tipe</label>
           <div class="mt-2.5">
             <select id="tipe" name="tipe" autocomplete="tipe-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
@@ -67,7 +69,7 @@
             </select>
           </div>
         </div>
-        <div>
+        <div id="kategori-pengaduan-section">
           <label for="kategori-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Kategori Pengaduan</label>
           <div class="mt-2.5">
             <select id="kategori-pengaduan" name="kategori-pengaduan" autocomplete="kategori-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
@@ -110,33 +112,34 @@
           </div>          
         </div>
 
-        <div class="sm:col-span-2 mt-6">
+        <div class="sm:col-span-2 mt-6" id="isi-pengaduan-section">
           <label for="isi-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Isi Pengaduan</label>
           <div class="mt-2.5">
             <textarea placeholder="Ketik Isi Laporan Anda" id="isi-pengaduan" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:text-sm sm:leading-6"></textarea>
           </div>
         </div>
         
-        @if ($selectedOption === 'kerusakan')
-        <div class="col-span-full mt-4">
-            <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto</label>
-            <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div class="text-center">
-                    <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-                    </svg>
-                    <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                        <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-blue-bmti focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-bmti focus-within:ring-offset-2 hover:text-[#9ca3af]">
-                            <span>Upload a file</span>
-                            <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                        </label>
-                        <p class="pl-1">or drag and drop</p>
-                    </div>
-                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-                </div>
-            </div>
+        <div class="col-span-full mt-4" id="upload-foto-section">
+          <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto</label>
+          <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+              <div class="text-center">
+                  <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
+                  </svg>
+                  <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                      <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-blue-bmti focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-bmti focus-within:ring-offset-2 hover:text-[#9ca3af]">
+                          <span>Upload a file</span>
+                          <input id="file-upload" name="file-upload" type="file" class="sr-only" accept="image/*" onchange="previewImage(event)">
+                      </label>
+                      <p class="pl-1">or drag and drop</p>
+                  </div>
+                  <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                  <div class="mt-4">
+                      <img id="image-preview" class="hidden w-32 h-32 object-cover rounded-md" />
+                  </div>
+              </div>
+          </div>
         </div>
-        @endif
 
       </div>
       <div class="mt-10">
@@ -145,3 +148,54 @@
     </form>
   </div>
 </div>
+
+<script>
+  function previewImage(event) {
+    const [file] = event.target.files;
+    if (file) {
+      const preview = document.getElementById('image-preview');
+      preview.src = URL.createObjectURL(file);
+      preview.classList.remove('hidden');
+    }
+  }
+
+  function toggleElements() {
+    const pengaduan = document.getElementById('pengaduan').checked;
+    const permintaanInformasi = document.getElementById('permintaan-informasi').checked;
+    const saran = document.getElementById('saran').checked;
+    const kerusakan = document.getElementById('kerusakan').checked;
+
+    const uploadFotoSection = document.getElementById('upload-foto-section');
+    const tanggalPengaduanSection = document.getElementById('tanggal-pengaduan-section');
+    const jenisLayananSection = document.getElementById('jenis-layanan-section');
+    const tipeSection = document.getElementById('tipe-section');
+    const kategoriPengaduanSection = document.getElementById('kategori-pengaduan-section');
+    const isiPengaduanSection = document.getElementById('isi-pengaduan-section');
+    
+    if (kerusakan) {
+      uploadFotoSection.classList.remove('hidden');
+      tanggalPengaduanSection.classList.remove('hidden');
+      jenisLayananSection.classList.remove('hidden');
+      tipeSection.classList.remove('hidden');
+      kategoriPengaduanSection.classList.remove('hidden');
+    } else if (permintaanInformasi) {
+      uploadFotoSection.classList.add('hidden');
+      tanggalPengaduanSection.classList.add('hidden');
+      jenisLayananSection.classList.add('hidden');
+      tipeSection.classList.add('hidden');
+      kategoriPengaduanSection.classList.add('hidden');
+      isiPengaduanSection.classList.remove('hidden');
+    } else {
+      uploadFotoSection.classList.add('hidden');
+      tanggalPengaduanSection.classList.remove('hidden');
+      jenisLayananSection.classList.remove('hidden');
+      tipeSection.classList.remove('hidden');
+      kategoriPengaduanSection.classList.remove('hidden');
+    }
+  }
+
+  // Initialize the function on page load to ensure correct initial state
+  document.addEventListener('DOMContentLoaded', function() {
+    toggleElements();
+  });
+</script>
