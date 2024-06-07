@@ -50,24 +50,27 @@
                 <div class="flex flex-col items-center justify-center mx-auto max-w-2xl lg:mx-0">
                     <img src="{{ asset('img/logo-bmti.png') }}" alt="logo bmti" class="h-28 w-auto">
                     <h2 class="text-4xl font-bold text-white sm:text-5xl tracking-wider mt-5">APEL</h2>
-                    <p class="mt-6 text-lg leading-8 text-gray-300 text-center">Anim aute id magna aliqua ad ad non
-                        deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                        fugiat aliqua.</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-300 text-center">Layanan Pengaduan Internal dan Eksternal BBPPMPV BMTI</p>
+                        <a href="#pengaduan" class="mt-7 pr-6 inline-flex items-center rounded-3xl border border-gray-300 px-3.5 py-2.5 text-sm font-semibold text-gray-300 shadow-sm hover:bg-gray-300 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 transition-colors duration-300">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mx-2 h-6 w-5">
+                            <path fill-rule="evenodd" d="M11.47 13.28a.75.75 0 0 0 1.06 0l7.5-7.5a.75.75 0 0 0-1.06-1.06L12 11.69 5.03 4.72a.75.75 0 0 0-1.06 1.06l7.5 7.5Z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M11.47 19.28a.75.75 0 0 0 1.06 0l7.5-7.5a.75.75 0 1 0-1.06-1.06L12 17.69l-6.97-6.97a.75.75 0 0 0-1.06 1.06l7.5 7.5Z" clip-rule="evenodd" />
+                        </svg>
+                          Mulai
+                        </a>                      
                 </div>
             </div>
         </div>
     </main>
 
-    <section>
-        <div class="flex justify-center mt-40 mb-16">
+    <section id="pengaduan">
+        <div class="flex justify-center mt-7 mb-16 pt-36">
             <div class="max-w-7xl px-6 lg:px-6">
                 <div class="grid max-w-2xl grid-cols-1 gap-x-52 gap-y-16 sm:gap-y-20 lg:max-w-none lg:grid-cols-2">
                     <div
                         class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
-                        <a href="#">
-                            <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Layanan Pengaduan Internal</h5>
-                        </a>
+                        <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Layanan Pengaduan Internal</h5>
                         <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan atau Ingin Memberikan Masukan? Kami Siap Mendengarkan!</p>
                         <a href="{{ route('internal.view') }}" class="inline-flex font-medium items-center text-blue-600 hover:underline">
                           Open
@@ -82,9 +85,7 @@
                     <div
                         class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
-                        <a href="#">
-                            <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Layanan Pengaduan Eksternal</h5>
-                        </a>
+                        <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Layanan Pengaduan Eksternal</h5>
                         <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan untuk Melaporkan Gratifikasi? Kami Siap Membantu!</p>
                         <a href="#" class="inline-flex font-medium items-center text-blue-600 hover:underline">
                             Open
@@ -193,7 +194,7 @@
                     </div>
                 </nav>
                 <div class="flex justify-center mt-8 space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-blue-bmti">
+                    <a href="https://www.facebook.com/bmti.kemdikbud/" target="_blank" class="text-gray-400 hover:text-blue-bmti">
                         <span class="sr-only">Facebook</span>
                         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -225,6 +226,10 @@
         </section>
     </footer>
 
+    <button id="back-to-top" class="hidden fixed bottom-12 right-8 z-50 p-5 px-6 rounded-full bg-blue-bmti text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        ↑
+    </button>
+
     {{-- Livewire --}}
     @livewireScripts
 
@@ -236,6 +241,29 @@
 
     {{-- Flowbite JS --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+
+    <script>
+        let backToTopButton = document.getElementById("back-to-top");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.classList.remove("hidden");
+                backToTopButton.classList.add("block");
+            } else {
+                backToTopButton.classList.remove("block");
+                backToTopButton.classList.add("hidden");
+            }
+        }
+
+        backToTopButton.addEventListener("click", function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+    </script>
 </body>
 
 </html>

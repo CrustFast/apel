@@ -26,7 +26,7 @@
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Layanan Informasi dan Pengaduan Masyarakat - APEL</title>
+    <title>Layanan Pengaduan Internal - APEL</title>
 </head>
 
 <body class="h-full">
