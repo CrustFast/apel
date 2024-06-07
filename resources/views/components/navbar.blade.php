@@ -1,10 +1,10 @@
 <nav class="sticky top-0 flex items-center justify-between p-4 lg:px-8 bg-white z-50" aria-label="Global">
   <div class="flex lg:flex-1">
-    <a href="#" class="-m-1.5 p-1 flex items-center">
+    <a href="{{ route('home.view') }}" class="-m-1.5 p-1 flex items-center">
       <span class="sr-only">BBPPMPV BMTI</span>
       <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
+      <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">APEL</h1>   
     </a>
-    <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">APEL</h1>    
   </div>
   <div class="flex lg:hidden">
     <button type="button" @click="isOpen = !isOpen" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
