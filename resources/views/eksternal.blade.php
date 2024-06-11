@@ -1,1 +1,1 @@
-<x-layout></x-layout>
+<x-eksternal.layout></x-eksternal.layout>

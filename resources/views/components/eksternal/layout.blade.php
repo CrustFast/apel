@@ -31,10 +31,10 @@
 
 <body class="h-full">
     <div class="min-h-full">
-        <x-navbar></x-navbar>
-        <x-header></x-header>
+        <x-eksternal.navbar></x-eksternal.navbar>
+        <x-eksternal.header></x-eksternal.header>
         @livewire('form')
-        <x-footer></x-footer>
+        <x-eksternal.footer></x-eksternal.footer>
     </div>
 
     {{-- Livewire --}}
