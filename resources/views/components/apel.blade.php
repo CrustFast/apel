@@ -101,7 +101,8 @@
                             Layanan Pengaduan Eksternal</h5>
                         <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan untuk Melaporkan
                             Gratifikasi? Kami Siap Membantu!</p>
-                        <a href="#" class="inline-flex font-medium items-center text-blue-600 hover:underline">
+                        <a href="{{ route('internal.view') }}"
+                            class="inline-flex font-medium items-center text-blue-600 hover:underline">
                             Open
                             <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
