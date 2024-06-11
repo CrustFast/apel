@@ -81,8 +81,8 @@
                         <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
                         <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Layanan Pengaduan Internal</h5>
-                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan atau Ingin Memberikan
-                            Masukan? Kami Siap Mendengarkan!</p>
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan untuk Melaporkan
+                            Gratifikasi? Kami Siap Membantu!</p>
                         <a href="{{ route('internal.view') }}"
                             class="inline-flex font-medium items-center text-blue-600 hover:underline">
                             Open
@@ -99,9 +99,9 @@
                         <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
                         <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Layanan Pengaduan Eksternal</h5>
-                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan untuk Melaporkan
-                            Gratifikasi? Kami Siap Membantu!</p>
-                        <a href="{{ route('internal.view') }}"
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan atau Ingin Memberikan
+                            Masukan? Kami Siap Mendengarkan!</p>
+                        <a href="{{ route('eksternal.view') }}"
                             class="inline-flex font-medium items-center text-blue-600 hover:underline">
                             Open
                             <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true"

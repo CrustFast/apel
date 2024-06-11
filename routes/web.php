@@ -11,6 +11,10 @@ Route::get('/internal', function () {
     return view('internal');
 })->name('internal.view');
 
+Route::get('/external', function () {
+    return view('eksternal');
+})->name('eksternal.view');
+
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
 
 
