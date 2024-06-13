@@ -50,8 +50,8 @@
                 <div class="flex flex-col items-center justify-center mx-auto max-w-2xl lg:mx-0">
                     <img src="{{ asset('img/logo-bmti.png') }}" alt="logo bmti" class="h-16 sm:h-28 w-auto"
                         data-aos="zoom-in" data-aos-duration="1000">
-                    <h2 class="text-4xl font-bold text-white sm:text-5xl tracking-wider mt-5">APEL</h2>
-                    <p class="mt-6 text-lg leading-8 text-gray-300 text-center">Layanan Pengaduan Internal dan Eksternal
+                    <h2 class="text-4xl font-bold text-white sm:text-5xl tracking-wider mt-8">APEL</h2>
+                    <p class="mt-2 text-lg leading-8 text-gray-300 text-center">Layanan Pengaduan Internal dan Eksternal
                         <strong>BBPPMPV BMTI</strong>
                     </p>
                     <a href="#pengaduan"
