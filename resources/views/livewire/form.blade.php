@@ -90,6 +90,10 @@
             <div class="flex justify-start">
               <div class="flex flex-col md:flex-row items-start gap-3">
                 <div class="flex items-center gap-x-2">
+                  <input id="identitas-lengkap" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleLengkapFields()">
+                  <label for="identitas-lengkap" class="block text-sm font-medium leading-6 text-gray-900">Lengkap</label>
+                </div>
+                <div class="flex items-center gap-x-2">
                   <input id="peserta-diklat" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="togglePesertaDiklatFields()">
                   <label for="peserta-diklat" class="block text-sm font-medium leading-6 text-gray-900">Peserta Diklat</label>
                 </div>
@@ -101,17 +105,13 @@
                   <input id="pengguna-fasilitas" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="togglePenggunaFasilitasFields()">
                   <label for="pengguna-fasilitas" class="block text-sm font-medium leading-6 text-gray-900">Pengguna Fasilitas</label>
                 </div>
-                <div class="flex items-center gap-x-2">
-                  <input id="masyarakat-umum" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleLengkapFields()">
-                  <label for="masyarakat-umum" class="block text-sm font-medium leading-6 text-gray-900">Masyarakat Umum</label>
-                </div>
               </div>
             </div>
           </div>
         </div>
 
         {{-- Fields baru untuk identitas lengkap --}}
-        <div id="masyarakat-umum-fields" class="hidden">
+        <div id="identitas-lengkap-fields" class="hidden">
           <div class="sm:col-span-2 mt-6">
             <label for="nama-lengkap" class="block text-sm font-semibold leading-6 text-gray-900">Nama Lengkap</label>
             <div class="relative mt-3">
@@ -295,7 +295,7 @@
   }
 
   function toggleLengkapFields() {
-    const identitasLengkapFields = document.getElementById('masyarakat-umum-fields');
+    const identitasLengkapFields = document.getElementById('identitas-lengkap-fields');
     const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
