@@ -33,6 +33,7 @@
     <div class="min-h-full">
         <x-internal.navbar></x-internal.navbar>
         <x-internal.header></x-internal.header>
+        <x-internal.form></x-internal.form>
         @include('components.eksternal.footer')
     </div>
 

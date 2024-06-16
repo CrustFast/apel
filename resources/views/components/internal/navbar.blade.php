@@ -3,7 +3,7 @@
     <a href="{{ route('home.view') }}" class="-m-1.5 p-1 flex items-center">
       <span class="sr-only">BBPPMPV BMTI</span>
       <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
-      <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">SIPENTAS</h1>   
+      <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">SILAGRA</h1>   
     </a>
   </div>
   <div class="flex lg:hidden">
@@ -19,12 +19,12 @@
       Beranda
       <span class="block h-1 w-0 bg-blue-bmti rounded-full mt-1 mx-auto transition-all duration-300 group-hover:w-10"></span>
     </a>
-    <a href="#form" class="relative group text-sm font-semibold leading-6 text-gray-900 hover:text-[#9ca3af] transition-all duration-300">
-      Formulir Aduan
+    <a href="https://gol.kpk.go.id/materi-sosialisasi/" target="_blank" class="relative group text-sm font-semibold leading-6 text-gray-900 hover:text-[#9ca3af] transition-all duration-300">
+      Apa itu Gratifikasi?
       <span class="block h-1 w-0 bg-blue-bmti rounded-full mt-1 mx-auto transition-all duration-300 group-hover:w-10"></span>
     </a>
-    <a href="https://bbppmpvbmti.kemdikbud.go.id/main/" target="_blank" class="relative group text-sm font-semibold leading-6 text-gray-900 hover:text-[#9ca3af] transition-all duration-300">
-      Tentang Kami
+    <a href="#form" class="relative group text-sm font-semibold leading-6 text-gray-900 hover:text-[#9ca3af] transition-all duration-300">
+      Formulir Aduan
       <span class="block h-1 w-0 bg-blue-bmti rounded-full mt-1 mx-auto transition-all duration-300 group-hover:w-10"></span>
     </a>
     <div class="relative" x-data="{ open: false }">
