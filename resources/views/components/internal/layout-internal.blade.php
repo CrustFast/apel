@@ -31,6 +31,7 @@
 
 <body class="h-full">
     <div class="min-h-full">
+        <x-internal.navbar></x-internal.navbar>
         <x-internal.header></x-internal.header>
         @include('components.eksternal.footer')
     </div>
