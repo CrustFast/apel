@@ -89,7 +89,7 @@
                   Dokumen Publik
                   <span class="absolute inset-0"></span>
                 </a>
-                <p class="mt-1 text-gray-600">Dokumen Publik</p>
+                <p class="mt-1 text-gray-600">Dokumen Terkait Pengendalian Gratifikasi</p>
               </div>
             </div>
             <div class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
