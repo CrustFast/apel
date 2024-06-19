@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<div class="overflow-hidden bg-white py-24 sm:py-32">
+<div class="overflow-hidden bg-white px-6 py-24 sm:py-32">
   <div class="mx-auto max-w-2xl text-center">
     <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Laporkan Gratifikasi dengan Mudah dan Aman!</h2>
     <p class="mt-6 text-md leading-8 text-gray-500">Apakah Anda menyaksikan atau menerima gratifikasi yang perlu dilaporkan?</p>
@@ -26,7 +26,7 @@
               SILAGRA
             </h5>
           </div>
-          <p class="mb-3 mt-3 font-normal text-gray-500 dark:text-gray-400">Dengan menggunakan Form SILAGRA, Anda bisa melaporkan gratifikasi secara online dengan cepat dan aman. Data Anda akan kami jaga kerahasiaannya, dan laporan Anda akan segera ditindaklanjuti oleh tim kami.</p>
+          <p class="mb-3 mt-3 font-normal text-gray-500 dark:text-gray-400">Dengan menggunakan SILAGRA, Anda bisa melaporkan gratifikasi secara online dengan cepat dan aman. Data Anda akan kami jaga kerahasiaannya, dan laporan Anda akan segera ditindaklanjuti oleh tim kami.</p>
           <a href="#timeline"
             class="inline-flex font-medium items-center text-blue-600 hover:underline">
             Open
@@ -63,45 +63,45 @@
   </div>
 
   {{-- Timeline --}}
-  <div id="timeline">
+  <div id="timeline" class="px-6">
     <div class="mx-auto max-w-2xl text-left pt-24">
       <h2 class="text-base font-bold tracking-tight text-gray-900 sm:text-lg inline-block relative">Langkah Mudah untuk Melaporkan Gratifikasi</h2>
       <p class="mt-3 mb-12 text-md leading-8 text-gray-500">Ikuti langkah-langkah berikut untuk melaporkan gratifikasi dengan mudah dan aman:</p>
       <ol class="bg-white relative border-s border-gray-200 dark:border-gray-700 mx-auto max-w-2xl">                  
         <li class="mb-10 ml-6">            
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </span>
-            <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Isi Form Online</h3>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Lengkapi form online dengan informasi detail mengenai gratifikasi yang ingin Anda laporkan. Pastikan semua data terisi dengan benar untuk mempercepat proses verifikasi.</p>
+          <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-5 ml-1 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <svg class="w-5 h-5 text-blue-bmti dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+            </svg>                      
+          </span>
+          <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Isi Form Online</h3>
+          <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Lengkapi form online dengan informasi detail mengenai gratifikasi yang ingin Anda laporkan. Pastikan semua data terisi dengan benar untuk mempercepat proses verifikasi.</p>
         </li>
         <li class="mb-10 ml-6">
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </span>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Download Formulir Laporan Gratifikasi</h3>
-            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Setelah mengisi form, download formulir laporan gratifikasi yang kami berikan. Dokumen ini berisi informasi yang diperlukan untuk proses lebih lanjut.</p>
-            <a href="{{ asset('storage/Form-Gratifikasi-KPK0.pdf') }}" class="mt-3 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700" download>
-              <svg class="w-3.5 h-3.5 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
-                  <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
-              </svg> Download Formulir Gratifikasi
+          <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-5 ml-1 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <svg class="w-5 h-5 text-blue-bmti dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01"/>
+            </svg>            
+          </span>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Download Formulir Laporan Gratifikasi</h3>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Setelah mengisi form, download formulir laporan gratifikasi yang kami berikan. Dokumen ini berisi informasi yang diperlukan untuk proses lebih lanjut.</p>
+          <a href="{{ asset('storage/Form-Gratifikasi-KPK0.pdf') }}" class="mt-3 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700" download>
+            <svg class="w-3.5 h-3.5 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
+              <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+            </svg> Download Formulir Gratifikasi
           </a>          
         </li>
         <li class="ml-6">
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </span>
-            <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Upload Formulir Laporan Gratifikasi</h3>
-            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Unggah formulir laporan gratifikasi yang telah Anda download ke platform kami. Tim kami akan segera memverifikasi laporan Anda dan mengambil langkah-langkah yang diperlukan.</p>
+          <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-5 ml-1 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <svg class="w-5 h-5 text-blue-bmti dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v9m-5 0H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2M8 9l4-5 4 5m1 8h.01"/>
+            </svg>            
+          </span>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Upload Formulir Laporan Gratifikasi</h3>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Unggah formulir laporan gratifikasi yang telah Anda download ke form di bawah ini. Tim kami akan segera memverifikasi laporan Anda dan mengambil langkah-langkah yang diperlukan.</p>
         </li>
-        </ol>
+      </ol>        
     </div>
   </div>
 </div>

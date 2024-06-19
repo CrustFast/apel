@@ -90,10 +90,6 @@
             <div class="flex justify-start">
               <div class="flex flex-col md:flex-row items-start gap-3">
                 <div class="flex items-center gap-x-2">
-                  <input id="identitas-lengkap" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleLengkapFields()">
-                  <label for="identitas-lengkap" class="block text-sm font-medium leading-6 text-gray-900">Lengkap</label>
-                </div>
-                <div class="flex items-center gap-x-2">
                   <input id="peserta-diklat" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="togglePesertaDiklatFields()">
                   <label for="peserta-diklat" class="block text-sm font-medium leading-6 text-gray-900">Peserta Diklat</label>
                 </div>
@@ -105,32 +101,11 @@
                   <input id="pengguna-fasilitas" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="togglePenggunaFasilitasFields()">
                   <label for="pengguna-fasilitas" class="block text-sm font-medium leading-6 text-gray-900">Pengguna Fasilitas</label>
                 </div>
+                <div class="flex items-center gap-x-2">
+                  <input id="masyarakat-umum" name="identitas-select" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleMasyarakatUmumFields()">
+                  <label for="masyarakat-umum" class="block text-sm font-medium leading-6 text-gray-900">Masyarakat Umum</label>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {{-- Fields baru untuk identitas lengkap --}}
-        <div id="identitas-lengkap-fields" class="hidden">
-          <div class="sm:col-span-2 mt-6">
-            <label for="nama-lengkap" class="block text-sm font-semibold leading-6 text-gray-900">Nama Lengkap</label>
-            <div class="relative mt-3">
-              <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-              <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Lengkap</label>
-            </div>
-          </div>
-          <div class="sm:col-span-2 mt-6">
-            <label for="nomor-telepon" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon</label>
-            <div class="relative mt-3">
-              <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-              <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nomor Telepon</label>
-            </div>
-          </div>
-          <div class="sm:col-span-2 mt-6">
-            <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
-            <div class="relative mt-3">
-              <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-              <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">example@gmail.com</label>
             </div>
           </div>
         </div>
@@ -156,26 +131,31 @@
             </div>
           </div>
           <div class="sm:col-span-2 mt-6">
-            <label for="kategori-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Program Keahlian</label>
+            <label for="program-keahlian" class="block text-sm font-semibold leading-6 text-gray-900">Program Keahlian</label>
             <div class="mt-2.5">
-              <select id="kategori-pengaduan" name="kategori-pengaduan" autocomplete="kategori-name" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
-                <option value="" disabled selected>Pilih Program Keahlian</option>
-                <option value="kesesuaian-persyaratan">Kesesuaian persyaratan pelayanan</option>
-                <option value="kemudahan-prosedur">Kemudahan prosedur</option>
-                <option value="kecepatan-pelayanan">Kecepatan pelayanan</option>
-                <option value="biaya-tarif">Biaya/tarif pelayanan</option>
-                <option value="kesesuaian-produk">Kesesuaian produk</option>
-                <option value="perilaku-petugas">Perilaku petugas</option>
-                <option value="kompetensi-petugas">Kompetensi/kemampuan petugas</option>
-                <option value="penanganan-pengaduan">Penanganan pengaduan</option>
-                <option value="kualitas-sarana">Kualitas sarana dan prasarana</option>
-              </select>
+                <select id="program-keahlian" name="program-keahlian" autocomplete="program-keahlian-name" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+                    <option value="" disabled selected>Pilih Program Keahlian</option>
+                    @foreach ($programKeahlianOptions as $option)
+                        <option value="{{ $option->id }}">{{ $option->nama_program_keahlian }}</option>
+                    @endforeach
+                </select>
             </div>
-          </div>
+          </div>        
         </div>
 
         {{-- Fields baru untuk Peserta PKL --}}
         <div id="peserta-pkl-fields" class="hidden">
+          <div class="sm:col-span-2 mt-6">
+            <label for="periode-magang" class="block text-sm font-semibold leading-6 text-gray-900">Pilih Periode Magang</label>
+            <div class="relative mt-3 max-w-sm">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
+                </svg>
+              </div>
+              <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select year">
+            </div>
+          </div>
           <div class="sm:col-span-2 mt-6">
             <label for="nama-peserta-pkl" class="block text-sm font-semibold leading-6 text-gray-900">Nama Peserta PKL</label>
             <div class="relative mt-3">
@@ -202,6 +182,13 @@
         {{-- Fields baru untuk Pengguna Fasilitas --}}
         <div id="pengguna-fasilitas-fields" class="hidden">
           <div class="sm:col-span-2 mt-6">
+            <label for="nama-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Nama Pengguna Fasilitas</label>
+            <div class="relative mt-3">
+              <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Anda</label>
+            </div>
+          </div>
+          <div class="sm:col-span-2 mt-6">
             <label for="fasilitas-digunakan" class="block text-sm font-semibold leading-6 text-gray-900">Fasilitas yang Digunakan</label>
             <div class="relative mt-3">
               <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
@@ -217,6 +204,31 @@
                 </svg>
               </div>
               <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+            </div>
+          </div>
+        </div>
+
+        {{-- Fields baru untuk Masyarakat Umum --}}
+        <div id="masyarakat-umum-fields" class="hidden">
+          <div class="sm:col-span-2 mt-6">
+            <label for="nama-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Nama</label>
+            <div class="relative mt-3">
+              <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama</label>
+            </div>
+          </div>
+          <div class="sm:col-span-2 mt-6">
+            <label for="email-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
+            <div class="relative mt-3">
+              <input type="email" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Email</label>
+            </div>
+          </div>
+          <div class="sm:col-span-2 mt-6">
+            <label for="alamat-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Alamat</label>
+            <div class="relative mt-3">
+              <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Alamat</label>
             </div>
           </div>
         </div>
@@ -294,44 +306,44 @@
     }
   }
 
-  function toggleLengkapFields() {
-    const identitasLengkapFields = document.getElementById('identitas-lengkap-fields');
-    const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
-    const pesertaPklFields = document.getElementById('peserta-pkl-fields');
-    const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
-
-    showSection(identitasLengkapFields);
-    hideSections([pesertaDiklatFields, pesertaPklFields, penggunaFasilitasFields]);
-  }
-
   function togglePesertaDiklatFields() {
-    const identitasLengkapFields = document.getElementById('identitas-lengkap-fields');
     const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
+    const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
 
-    hideSections([identitasLengkapFields, pesertaPklFields, penggunaFasilitasFields]);
+    hideSections([pesertaPklFields, penggunaFasilitasFields, masyarakatUmumFields]);
     showSection(pesertaDiklatFields);
   }
 
   function togglePesertaPklFields() {
-    const identitasLengkapFields = document.getElementById('identitas-lengkap-fields');
     const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
+    const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
 
-    hideSections([identitasLengkapFields, pesertaDiklatFields, penggunaFasilitasFields]);
+    hideSections([pesertaDiklatFields, penggunaFasilitasFields, masyarakatUmumFields]);
     showSection(pesertaPklFields);
   }
 
   function togglePenggunaFasilitasFields() {
-    const identitasLengkapFields = document.getElementById('identitas-lengkap-fields');
     const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
+    const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
 
-    hideSections([identitasLengkapFields, pesertaDiklatFields, pesertaPklFields]);
+    hideSections([pesertaDiklatFields, pesertaPklFields, masyarakatUmumFields]);
     showSection(penggunaFasilitasFields);
+  }
+
+  function toggleMasyarakatUmumFields() {
+    const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
+    const pesertaPklFields = document.getElementById('peserta-pkl-fields');
+    const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
+    const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
+
+    hideSections([pesertaDiklatFields, pesertaPklFields, penggunaFasilitasFields]);
+    showSection(masyarakatUmumFields);
   }
 
   function updateTipeOptions() {
