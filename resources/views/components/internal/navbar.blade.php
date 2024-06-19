@@ -124,8 +124,8 @@
     </div>
   </div>
   <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-    <a href="#" class="relative group text-sm font-semibold leading-6 text-gray-900 hover:text-[#9ca3af] transition-all duration-300">
-      Log in <span aria-hidden="true">&rarr;</span>
+    <a href="{{ route('home.view') }}" class="relative group text-sm font-semibold leading-6 text-gray-900 hover:text-[#9ca3af] transition-all duration-300">
+      Home <span aria-hidden="true">&rarr;</span>
       <span class="absolute left-0 bottom-0 h-0.5 w-0 bg-[#1f2937] rounded-full mt-1 transition-all duration-300 group-hover:w-10"></span>
     </a>
   </div>
