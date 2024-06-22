@@ -49,7 +49,7 @@
         <div id="jenis-layanan-section" class="hidden">
           <label for="jenis-layanan" class="block text-sm font-semibold leading-6 text-gray-900">Pilih Jenis Layanan</label>
           <div class="mt-2.5">
-            <select id="jenis-layanan" name="jenis-layanan" autocomplete="jenis-layanan" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+            <select id="jenis-layanan" name="jenis-layanan" autocomplete="jenis-layanan" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
               <option value="" disabled selected>Pilih Jenis Layanan</option>
               <option value="diklat">Diklat</option>
               <option value="non-diklat">Non Diklat</option>
@@ -59,7 +59,7 @@
         <div id="tipe-section" class="hidden">
           <label for="tipe" class="block text-sm font-semibold leading-6 text-gray-900">Tipe</label>
           <div class="mt-2.5">
-            <select id="tipe" name="tipe" autocomplete="tipe-name" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+            <select id="tipe" name="tipe" autocomplete="tipe-name" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
               <option value="" disabled selected>Pilih Tipe</option>
               <option value="daring">Daring</option>
               <option value="luring">Luring</option>
@@ -117,7 +117,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="program-keahlian" class="block text-sm font-semibold leading-6 text-gray-900">Program Keahlian</label>
             <div class="mt-2.5">
-                <select id="program-keahlian" name="program-keahlian" autocomplete="program-keahlian-name" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+                <select id="program-keahlian" name="program-keahlian" autocomplete="program-keahlian-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
                     <option value="" disabled selected>Pilih Program Keahlian</option>
                     @foreach ($programKeahlianOptions as $option)
                         <option value="{{ $option->id }}">{{ $option->nama_program_keahlian }}</option>
@@ -247,7 +247,7 @@
           </div>
         </div>
 
-        <div id="anonim-section" class="sm:col-span-2 mt-6 flex gap-4 items-center hidden">
+        <div id="anonim-section" class="sm:col-span-2 mt-6 flex gap-4 items-center hidden"> 
           <div class="flex items-center relative group">
             <input id="anonim" name="anonim" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
             <label for="anonim" class="ml-2 block text-sm font-medium leading-6 text-gray-900">Anonim</label>
