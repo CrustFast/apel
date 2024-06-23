@@ -49,7 +49,7 @@
         <div id="jenis-layanan-section" class="hidden">
           <label for="jenis-layanan" class="block text-sm font-semibold leading-6 text-gray-900">Pilih Jenis Layanan</label>
           <div class="mt-2.5">
-            <select id="jenis-layanan" name="jenis-layanan" autocomplete="jenis-layanan" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+            <select id="jenis-layanan" name="jenis-layanan" autocomplete="jenis-layanan" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
               <option value="" disabled selected>Pilih Jenis Layanan</option>
               <option value="diklat">Diklat</option>
               <option value="non-diklat">Non Diklat</option>
@@ -59,7 +59,7 @@
         <div id="tipe-section" class="hidden">
           <label for="tipe" class="block text-sm font-semibold leading-6 text-gray-900">Tipe</label>
           <div class="mt-2.5">
-            <select id="tipe" name="tipe" autocomplete="tipe-name" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+            <select id="tipe" name="tipe" autocomplete="tipe-name" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
               <option value="" disabled selected>Pilih Tipe</option>
               <option value="daring">Daring</option>
               <option value="luring">Luring</option>
@@ -117,7 +117,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="program-keahlian" class="block text-sm font-semibold leading-6 text-gray-900">Program Keahlian</label>
             <div class="mt-2.5">
-                <select id="program-keahlian" name="program-keahlian" autocomplete="program-keahlian-name" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+                <select id="program-keahlian" name="program-keahlian" autocomplete="program-keahlian-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
                     <option value="" disabled selected>Pilih Program Keahlian</option>
                     @foreach ($programKeahlianOptions as $option)
                         <option value="{{ $option->id }}">{{ $option->nama_program_keahlian }}</option>
@@ -166,6 +166,17 @@
         {{-- Fields baru untuk Pengguna Fasilitas --}}
         <div id="pengguna-fasilitas-fields" class="hidden">
           <div class="sm:col-span-2 mt-6">
+            <label for="tanggal-penggunaan" class="block text-sm font-semibold leading-6 text-gray-900">Tanggal Penggunaan</label>
+            <div class="relative mt-3 max-w-sm">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
+                </svg>
+              </div>
+              <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+            </div>
+          </div>
+          <div class="sm:col-span-2 mt-6">
             <label for="nama-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Nama Pengguna Fasilitas</label>
             <div class="relative mt-3">
               <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
@@ -177,17 +188,6 @@
             <div class="relative mt-3">
               <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Fasilitas yang Digunakan</label>
-            </div>
-          </div>
-          <div class="sm:col-span-2 mt-6">
-            <label for="tanggal-penggunaan" class="block text-sm font-semibold leading-6 text-gray-900">Tanggal Penggunaan</label>
-            <div class="relative mt-3 max-w-sm">
-              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
-                </svg>
-              </div>
-              <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
             </div>
           </div>
         </div>
@@ -215,6 +215,7 @@
               <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Alamat</label>
             </div>
           </div>
+          
         </div>
 
         <div class="sm:col-span-2 mt-6" id="isi-pengaduan-section">
@@ -242,6 +243,23 @@
               <div class="mt-4">
                 <img id="image-preview" class="hidden w-32 h-32 object-cover rounded-md" />
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="anonim-section" class="sm:col-span-2 mt-6 flex gap-4 items-center hidden"> 
+          <div class="flex items-center relative group">
+            <input id="anonim" name="anonim" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+            <label for="anonim" class="ml-2 block text-sm font-medium leading-6 text-gray-900">Anonim</label>
+            <div class="absolute w-48 p-2 text-xs text-white bg-gray-900 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
+              Nama Anda tidak akan terpublikasi pada laporan
+            </div>
+          </div>
+          <div class="flex items-center relative group">
+            <input id="rahasia" name="anonim" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+            <label for="rahasia" class="ml-2 block text-sm font-medium leading-6 text-gray-900">Rahasia</label>
+            <div class="absolute w-48 p-2 text-xs text-white bg-gray-900 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
+              Nama Anda hanya akan diketahui oleh petugas terkait
             </div>
           </div>
         </div>
@@ -295,9 +313,11 @@
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
     const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
+    const anonimSection = document.getElementById('anonim-section');
 
     hideSections([pesertaPklFields, penggunaFasilitasFields, masyarakatUmumFields]);
     showSection(pesertaDiklatFields);
+    hideSection(anonimSection);
   }
 
   function togglePesertaPklFields() {
@@ -305,9 +325,11 @@
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
     const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
+    const anonimSection = document.getElementById('anonim-section');
 
     hideSections([pesertaDiklatFields, penggunaFasilitasFields, masyarakatUmumFields]);
     showSection(pesertaPklFields);
+    hideSection(anonimSection);
   }
 
   function togglePenggunaFasilitasFields() {
@@ -315,9 +337,11 @@
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
     const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
+    const anonimSection = document.getElementById('anonim-section');
 
     hideSections([pesertaDiklatFields, pesertaPklFields, masyarakatUmumFields]);
     showSection(penggunaFasilitasFields);
+    hideSection(anonimSection);
   }
 
   function toggleMasyarakatUmumFields() {
@@ -325,9 +349,11 @@
     const pesertaPklFields = document.getElementById('peserta-pkl-fields');
     const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
     const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
+    const anonimSection = document.getElementById('anonim-section');
 
     hideSections([pesertaDiklatFields, pesertaPklFields, penggunaFasilitasFields]);
     showSection(masyarakatUmumFields);
+    showSection(anonimSection);
   }
 
   function updateTipeOptions() {
