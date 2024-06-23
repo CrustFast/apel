@@ -67,23 +67,7 @@
             </select>
           </div>
         </div>
-        <div id="kategori-pengaduan-section" class="hidden">
-          <label for="kategori-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Kategori Pengaduan</label>
-          <div class="mt-2.5">
-            <select id="kategori-pengaduan" name="kategori-pengaduan" autocomplete="kategori-name" class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
-              <option value="" disabled selected>Pilih Kategori</option>
-              <option value="kesesuaian-persyaratan">Kesesuaian persyaratan pelayanan</option>
-              <option value="kemudahan-prosedur">Kemudahan prosedur</option>
-              <option value="kecepatan-pelayanan">Kecepatan pelayanan</option>
-              <option value="biaya-tarif">Biaya/tarif pelayanan</option>
-              <option value="kesesuaian-produk">Kesesuaian produk</option>
-              <option value="perilaku-petugas">Perilaku petugas</option>
-              <option value="kompetensi-petugas">Kompetensi/kemampuan petugas</option>
-              <option value="penanganan-pengaduan">Penanganan pengaduan</option>
-              <option value="kualitas-sarana">Kualitas sarana dan prasarana</option>
-            </select>
-          </div>
-        </div>
+        @livewire('kategori-pengaduan') {{-- Memanggil Komponen Livewire Kategori Pengaduan --}}
         <div class="sm:col-span-2">
           <label for="identitas" class="block text-sm font-semibold leading-6 text-gray-900 text-center mt-6 w-full">Identitas</label>
           <div class="mt-3 space-y-6">
