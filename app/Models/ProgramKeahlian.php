@@ -9,7 +9,7 @@ class ProgramKeahlian extends Model
 {
     use HasFactory;
 
-    protected $table = 'program_keahlian';
+    protected $table = 'program_keahlian_2';
 
     protected $fillable = ['nama_program_keahlian'];
 }
