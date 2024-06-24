@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LoginController;
 
+// login Page
+Route::get('/login', [LoginController::class, 'index']);
+
+// Main Page
 Route::get('/', function () {
     return view('pages.home');
 })->name('home.view');
