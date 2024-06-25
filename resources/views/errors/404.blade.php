@@ -41,7 +41,7 @@
                       autoplay>
         </lottie-player>
         <div class="error-message">Oops! Page Not Found</div>
-        <a href="/" class="error-link">Go back to Home</a>
+        <a href="{{ route('home.view') }}" class="error-link">Go back to Home</a>
     </div>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
