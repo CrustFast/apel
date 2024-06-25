@@ -34,11 +34,11 @@
 <body>
     <div class="container">
         <lottie-player src="{{ asset('img/Animation - 1719230834033.json') }}"
-                      background="transparent"
-                      speed="1"
-                      style="width: 300px; height: 300px;"
-                      loop
-                      autoplay>
+                    background="transparent"
+                    speed="1"
+                    style="width: 300px; height: 300px;"
+                    loop
+                    autoplay>
         </lottie-player>
         <div class="error-message">Oops! Page Not Found</div>
         <a href="{{ route('home.view') }}" class="error-link">Go back to Home</a>
