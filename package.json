@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
+        "apexcharts": "^3.49.2",
         "flatpickr": "^4.6.13",
         "flowbite-datepicker": "^1.2.6"
     }
