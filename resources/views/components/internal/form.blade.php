@@ -85,7 +85,7 @@
           <label for="objek-gratifikasi" class="block text-sm font-semibold leading-6 text-gray-900">Objek Gratifikasi</label>
           <div class="relative mt-3">
             <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-            <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan jenis/bentuk gratifikasi</label>
+            <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Contoh: Uang Tunai</label>
           </div>
         </div>
         <div id="pemanfaatan-objek-gratifikasi" >
@@ -120,7 +120,7 @@
         </div>
 
         <div class="col-span-full mt-4" id="upload-foto-section" class="hidden">
-          <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto(optional) dan Dokumen yang telah Anda unduh</label>
+          <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto(Bukti) dan Dokumen yang telah Anda unduh</label>
           <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
             <div class="text-center">
               <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
