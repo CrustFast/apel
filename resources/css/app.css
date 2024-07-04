@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'filepond/dist/filepond.min.css';
+@import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+
 html {
   scroll-behavior: smooth;
 }
@@ -52,3 +55,9 @@ header {
   transform: translate(-10px, -10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
+Hide the PQINA watermark
+.filepond--credits {
+  display: none !important;
+}
+
