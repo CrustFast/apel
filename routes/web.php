@@ -21,6 +21,10 @@ Route::get('/internal', function () {
     return view('pages.internal');
 })->name('internal.view');
 
+Route::get('/benturan_kepentingan', function () {
+    return view('pages.benturan-kepentingan');
+})->name('internal.view');
+
 Route::get('/external', function () {
     return view('pages.eksternal');
 })->name('eksternal.view');
