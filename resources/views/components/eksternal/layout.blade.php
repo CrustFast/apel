@@ -20,13 +20,21 @@
     <!-- Alpine JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    {{-- Filepond --}}
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+
+    <!-- FilePond Image Preview Plugin CSS -->
+    <link
+    href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet"/>
+
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Layanan Pengaduan Internal - APEL</title>
+    <title>Layanan Pengaduan Eksternal - APEL</title>
 </head>
 
 <body class="h-full">
@@ -48,6 +56,12 @@
 
     {{-- Flowbite JS --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+
+    {{-- Filepond --}}
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+    <!-- FilePond Image Preview Plugin JS -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 </body>
 
 </html>
