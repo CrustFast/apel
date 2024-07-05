@@ -46,6 +46,7 @@ export default {
       },
       colors: {
         'blue-bmti': '#208AEB',
+        'green-wa' : '#25d366',
       },
     },
   },
