@@ -16,6 +16,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@preline/stepper": "^2.3.0",
         "aos": "^2.3.4",
         "apexcharts": "^3.49.2",
         "filepond": "^4.31.1",
@@ -24,6 +25,7 @@
         "filepond-plugin-image-exif-orientation": "^1.0.11",
         "filepond-plugin-image-preview": "^4.6.12",
         "flatpickr": "^4.6.13",
-        "flowbite-datepicker": "^1.2.6"
+        "flowbite-datepicker": "^1.2.6",
+        "preline": "^2.3.0"
     }
 }
