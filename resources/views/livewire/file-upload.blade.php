@@ -19,5 +19,5 @@
   "
 >
 
-  <input type="file" x-ref="input"/>
+  <input type="file" wire:model="files" multiple x-ref="input"/>
 </div>

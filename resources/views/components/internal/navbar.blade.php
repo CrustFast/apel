@@ -3,7 +3,7 @@
     <a href="{{ route('home.view') }}" class="-m-1.5 p-1 flex items-center">
       <span class="sr-only">BBPPMPV BMTI</span>
       <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
-      <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">SILAGRA</h1>   
+      <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">SIAP</h1>   
     </a>
   </div>
   <div class="flex lg:hidden">

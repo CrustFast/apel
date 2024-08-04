@@ -34,7 +34,7 @@
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Layanan Pengaduan Internal - APEL</title>
+    <title>Sistem Informasi dan Pelaporan Gratifikasi - SIAP</title>
 </head>
 
 <body class="h-full">

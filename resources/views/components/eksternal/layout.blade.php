@@ -34,7 +34,7 @@
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Layanan Pengaduan Eksternal - APEL</title>
+    <title>Layanan Pengaduan Eksternal - FAST SOLUTION</title>
 </head>
 
 <body class="h-full">

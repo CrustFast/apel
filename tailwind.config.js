@@ -7,7 +7,7 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     "./node_modules/flowbite/**/*.js",
-    "node_modules/preline/dist/*.js",
+    'node_modules/preline/dist/*.js',
   ],
   theme: {
     extend: {
@@ -52,10 +52,10 @@ export default {
     },
   },
   plugins: [
+    require('preline/plugin'),
     require('@tailwindcss/forms'),
     require('flowbite/plugin')({
       charts: true,
-    }),
-    require('preline/plugin'),
+    })
   ],
 }

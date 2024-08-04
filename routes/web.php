@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
+use App\Livewire\Eksternal\FormGratifikasi;
 
 // login Page
 Route::get('/login', [LoginController::class, 'index']);
@@ -23,7 +24,7 @@ Route::get('/internal', function () {
 
 Route::get('/benturan_kepentingan', function () {
     return view('pages.benturan-kepentingan');
-})->name('internal.view');
+})->name('benturan-kepentingan.view');
 
 Route::get('/external', function () {
     return view('pages.eksternal');
@@ -31,5 +32,4 @@ Route::get('/external', function () {
 
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
 
-
-
+Route::get('/form-gratifikasi', FormGratifikasi::class);

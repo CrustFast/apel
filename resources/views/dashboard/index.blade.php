@@ -26,7 +26,7 @@
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Dashboard Admin - APEL</title>
+    <title>Dashboard Admin - SIGAP</title>
 </head>
 
 <body class="h-full">

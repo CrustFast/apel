@@ -16,7 +16,11 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "@preline/combobox": "^2.4.0",
+        "@preline/overlay": "^2.4.0",
         "@preline/stepper": "^2.3.0",
+        "@preline/tooltip": "^2.4.0",
         "aos": "^2.3.4",
         "apexcharts": "^3.49.2",
         "filepond": "^4.31.1",

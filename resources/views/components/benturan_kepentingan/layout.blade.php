@@ -34,12 +34,14 @@
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Layanan Pengaduan Benturan Kepentingan - APEL</title>
+    <title>Layanan Pengaduan Benturan Kepentingan - KONFES</title>
 </head>
 
 <body class="h-full">
     <div class="min-h-full">
-        
+        <x-benturan_kepentingan.navbar></x-benturan_kepentingan.navbar>
+        <x-benturan_kepentingan.header></x-benturan_kepentingan.header>
+        @livewire('eksternal.form-benturan-kepentingan')
         @include('components.eksternal.footer')
     </div>
 
@@ -65,6 +67,9 @@
 
     <!-- FilePond Image Preview Plugin JS -->
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+
+    {{-- Preline --}}
+    <script src="./node_modules/preline/dist/preline.js"></script>
 </body>
 
 </html>

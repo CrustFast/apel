@@ -3,9 +3,9 @@
     <a href="{{ route('home.view') }}" class="-m-1.5 p-1 flex items-center">
       <span class="sr-only">BBPPMPV BMTI</span>
       <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
-      <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">FAST SOLUTION</h1>   
+      <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">KONFES</h1>   
     </a>
-  </div>
+  </div> 
   <div class="flex lg:hidden">
     <button type="button" @click="isOpen = !isOpen" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
       <span class="sr-only">Open main menu</span>

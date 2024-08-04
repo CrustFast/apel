@@ -40,7 +40,7 @@
                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
               </svg>
             </div>
-            <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+            <input datepicker datepicker-autohide datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
           </div>
         </div>
         <div id="jenis-layanan-section">
@@ -255,6 +255,24 @@
           
         </div>
 
+        {{-- Fields baru untuk Permintaan Informasi --}}
+        <div id="permintaan-informasi-fields" class="hidden">
+          <div class="sm:col-span-2 mt-6">
+            <label for="nama-peminta-informasi" class="block text-sm font-semibold leading-6 text-gray-900">Nama</label>
+            <div class="relative mt-3">
+              <input type="text" id="nama-peminta-informasi" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="nama-peminta-informasi" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama</label>
+            </div>
+          </div>
+          <div class="sm:col-span-2 mt-6">
+            <label for="nomor-telepon-peminta-informasi" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon</label>
+          <div class="relative mt-3">
+            <input type="text" id="nomor-telepon-peminta-informasi" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+            <label for="nomor-telepon-peminta-informasi" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+          </div>
+          </div>
+        </div>
+
         <div class="sm:col-span-2 mt-6" id="isi-pengaduan-section">
           <label for="isi-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Isi Pengaduan</label>
           <div class="mt-2.5">
@@ -263,7 +281,7 @@
         </div>
 
         <div class="col-span-full mt-4 hidden" id="upload-foto-section">
-          <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto</label>
+          <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto Sebagai Bukti Pendukung</label>
           @livewire('file-upload')
         </div>
 
@@ -293,15 +311,6 @@
 </div>
 
 <script>
-  function previewImage(event) {
-    const [file] = event.target.files;
-    if (file) {
-      const preview = document.getElementById('image-preview');
-      preview.src = URL.createObjectURL(file);
-      preview.classList.remove('hidden');
-    }
-  }
-
   function toggleElements() {
     const pengaduan = document.getElementById('pengaduan').checked;
     const permintaanInformasi = document.getElementById('permintaan-informasi').checked;
@@ -313,19 +322,49 @@
     const tipeSection = document.getElementById('tipe-section');
     const kategoriPengaduanSection = document.getElementById('kategori-pengaduan-section');
     const isiPengaduanSection = document.getElementById('isi-pengaduan-section');
+    const permintaanInformasiFields = document.getElementById('permintaan-informasi-fields');
+    const isiPengaduanLabel = document.querySelector('label[for="isi-pengaduan"]');
+    const isiPengaduanTextarea = document.getElementById('isi-pengaduan');
 
-    const sections = [tanggalPengaduanSection, jenisLayananSection, tipeSection, kategoriPengaduanSection];
+    // Pengaduan Fields
+    const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
+    const pesertaPklFields = document.getElementById('peserta-pkl-fields');
+    const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
+    const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
+    const anonimSection = document.getElementById('anonim-section');
 
-    if (permintaanInformasi) {
-      hideSections(sections);
+    // Hide all sections initially
+    hideSection(tanggalPengaduanSection);
+    hideSection(jenisLayananSection);
+    hideSection(tipeSection);
+    hideSection(kategoriPengaduanSection);
+    hideSection(isiPengaduanSection);
+    hideSection(uploadFotoSection);
+    hideSection(permintaanInformasiFields);
+    hideSection(pesertaDiklatFields);
+    hideSection(pesertaPklFields);
+    hideSection(penggunaFasilitasFields);
+    hideSection(masyarakatUmumFields);
+    hideSection(anonimSection);
+
+    if (permintaanInformasi || saran) {
+      showSection(permintaanInformasiFields);
       showSection(isiPengaduanSection);
-      hideSection(uploadFotoSection);
+      isiPengaduanLabel.textContent = permintaanInformasi ? 'Isi Permintaan Informasi' : 'Isi Saran';
+      isiPengaduanTextarea.placeholder = permintaanInformasi ? 'Ketik Isi Permintaan Informasi Anda' : 'Ketik Isi Saran Anda';
     } else if (pengaduan) {
-      showSections(sections);
+      showSection(tanggalPengaduanSection);
+      showSection(jenisLayananSection);
+      showSection(tipeSection);
+      showSection(kategoriPengaduanSection);
+      showSection(isiPengaduanSection);
       showSection(uploadFotoSection);
+      isiPengaduanLabel.textContent = 'Isi Pengaduan';
+      isiPengaduanTextarea.placeholder = 'Ketik Isi Pengaduan Anda';
     } else {
-      showSections(sections);
-      hideSection(uploadFotoSection);
+      showSection(isiPengaduanSection);
+      isiPengaduanLabel.textContent = 'Isi Pengaduan';
+      isiPengaduanTextarea.placeholder = 'Ketik Isi Pengaduan Anda';
     }
   }
 
@@ -353,7 +392,6 @@
         <option value="pkl">PKL</option>
         <option value="pengguna-fasilitas">Pengguna Fasilitas</option>
         <option value="kunjungan">Masyarakat Umum</option>
-        <option value="prioritas">Masyarakat Umum</option>
       `;
     }
     showSection(tipeSection);
@@ -402,4 +440,6 @@
     document.getElementById('tipe').addEventListener('change', toggleFieldsBasedOnTipe);
   });
 </script>
+
+
 

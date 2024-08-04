@@ -3,7 +3,7 @@
     class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
   <div class="flex flex-col items-center justify-center mx-auto max-w-7xl px-6 lg:px-8">
     <div class="flex flex-col items-center justify-center mx-auto max-w-2xl lg:mx-0 text-center">
-      <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold text-white tracking-wider mt-5">Layanan Pengaduan Gratifikasi Online</h2>
+      <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold text-white tracking-wider mt-5">Sistem Informasi dan Pelaporan Gratifikasi</h2>
       <p class="mt-6 text-lg leading-8 text-gray-300">Laporkan gratifikasi langsung kepada kami atau kepada instansi pemerintah berwenang dengan mudah dan aman.</p>
     </div>
   </div>
@@ -23,10 +23,10 @@
           <div class="flex items-center">
             <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
             <h5 class="ml-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              SILAGRA
+              SIAP
             </h5>
           </div>
-          <p class="mb-3 mt-3 font-normal text-gray-500 dark:text-gray-400">Dengan menggunakan SILAGRA, Anda bisa melaporkan gratifikasi secara online dengan cepat dan aman. Data Anda akan kami jaga kerahasiaannya, dan laporan Anda akan segera ditindaklanjuti oleh tim kami.</p>
+          <p class="mb-3 mt-3 font-normal text-gray-500 dark:text-gray-400">Dengan menggunakan SIAP, Anda bisa melaporkan gratifikasi secara online dengan cepat dan aman. Data Anda akan kami jaga kerahasiaannya, dan laporan Anda akan segera ditindaklanjuti oleh tim kami.</p>
           <a href="#timeline"
             class="inline-flex font-medium items-center text-blue-600 hover:underline">
             Open
