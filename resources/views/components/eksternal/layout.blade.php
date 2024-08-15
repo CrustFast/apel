@@ -35,9 +35,30 @@
     @livewireStyles
 
     <title>Layanan Pengaduan Eksternal - FAST SOLUTION</title>
+
+    <style>
+        /* lottie */
+        #loading-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            /* rgba(255, 255, 255, 0.8) */
+            z-index: 9999;
+            display: none; 
+        }
+    </style>
 </head>
 
 <body class="h-full">
+    <!-- Div untuk animasi Lottie -->
+    <div id="loading-animation">
+        <div id="lottie"></div>
+    </div>
+
     <div class="min-h-full">
         <x-eksternal.navbar></x-eksternal.navbar>
         <x-eksternal.header></x-eksternal.header>
@@ -62,6 +83,30 @@
 
     <!-- FilePond Image Preview Plugin JS -->
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+
+    {{-- Lottie --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
+
+    <script>
+        // Inisialisasi animasi Lottie 
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '{{ asset('img/loading.json') }}' 
+        });
+
+        // Tampilkan animasi saat halaman mulai dimuat
+        window.addEventListener("beforeunload", function() {
+            document.getElementById('loading-animation').style.display = 'flex';
+        });
+
+        // Sembunyikan animasi setelah halaman selesai dimuat
+        window.addEventListener("load", function() {
+            document.getElementById('loading-animation').style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>
