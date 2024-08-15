@@ -88,13 +88,31 @@
       display: none; /* Initially hidden */
     }
 
-.my-float{
-	margin-top:16px;
-}
+    .my-float{
+      margin-top:16px;
+    }
+
+    #loading-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            /* rgba(255, 255, 255, 0.8) */
+            z-index: 9999;
+            display: none; 
+    }
   </style>
 </head>
 
 <body class="h-full">
+  <!-- Div untuk animasi Lottie -->
+  <div id="loading-animation">
+    <div id="lottie"></div>
+  </div>
+
   <!-- Navbar -->
   <nav id="navbar" class="navbar flex items-center justify-between p-4 lg:px-8 text-white" aria-label="Global" x-data="{ isOpen: false, solutionsOpen: false }">
     <div class="flex lg:flex-1">
@@ -215,8 +233,8 @@
       </div>
       <div class="flex flex-col items-center justify-center mx-auto max-w-7xl px-8 mt-5 lg:px-8">
         <div class="flex flex-col items-center justify-center mx-auto max-w-2xl lg:mx-0">
-          <img src="{{ asset('img/logo-bmti.png') }}" alt="logo bmti" class="h-16 sm:h-28 lg:h-40 w-auto mb-5" data-aos="zoom-in" data-aos-duration="1000">
-          <h2 class="text-4xl font-bold text-white sm:text-5xl tracking-wider mt-8">SIGAP</h2>
+          <img src="{{ asset('img/logo-bmti.png') }}" alt="logo bmti" class="h-24 sm:h-28 md:h-28 lg:h-28 xl:h-28 w-auto mb-5 " data-aos="zoom-in" data-aos-duration="1000">
+          <h2 class="text-4xl font-bold text-white sm:text-5xl tracking-wider mt-8 sm:mt-10">SIGAP</h2>
           <p class="mt-2 text-lg leading-8 text-gray-300 text-center">Sistem Informasi Pengaduan dan Pengawasan</p>
           <a href="#pengaduan" class="float-animation mt-9 pr-6 inline-flex items-center rounded-3xl border border-gray-300 px-3.5 py-2.5 text-sm font-semibold text-gray-300 shadow-sm hover:bg-gray-300 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 transition-colors duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mx-2 h-6 w-5">
@@ -372,11 +390,11 @@
 
   <!-- Cek Status Pengaduan -->
   <section id="cekStatus">
-    <div class="mx-auto max-w-2xl text-center mb-12 pt-36">
+    <div class="mx-auto max-w-2xl text-center mb-12 pt-36 px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Cek Status Pengaduan Anda</h2>
       <p class="mt-6 text-md leading-8 text-gray-500">Layanan ini memungkinkan Anda untuk memantau perkembangan dan penanganan aduan yang telah Anda sampaikan.</p>
     </div>
-    <form class="flex items-center max-w-sm mx-auto mb-6">   
+    <form class="flex items-center max-w-sm mx-auto mb-6 px-4 sm:px-6 lg:px-8">   
       <label for="simple-search" class="sr-only">Search</label>
       <div class="relative w-full">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -396,11 +414,11 @@
   </section>
 
   <section id="manfaat">
-    <div class="mx-auto max-w-2xl text-center mb-12 pt-36">
+    <div class="mx-auto max-w-2xl text-center mb-12 pt-36 px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Manfaat Pengaduan Masyarakat</h2>
       <p class="mt-6 text-md leading-8 text-gray-500">Manfaat-manfaat ini menunjukkan betapa pentingnya sistem pengaduan masyarakat bagi kami dalam upaya untuk terus meningkatkan layanan dan menjawab kebutuhan masyarakat dengan lebih baik.</p>
     </div>
-    <div class="grid max-w-screen-lg gap-8 row-gap-10 mx-auto lg:grid-cols-2">
+    <div class="grid max-w-screen-lg gap-8 row-gap-10 mx-auto lg:grid-cols-2 px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col max-w-md sm:mx-auto sm:flex-row">
         <div class="mr-4">
           <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50 shadow-md">
@@ -534,6 +552,9 @@
   <!-- Flowbite JS -->
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 
+  {{-- Lottie --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
+
   <script>
     let navbar = document.getElementById("navbar");
     let mainContent = document.getElementById("main-content");
@@ -567,6 +588,25 @@
         navbar.classList.remove("bg-blue");
       }
     }
+
+    // Inisialisasi animasi Lottie 
+    var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '{{ asset('img/loading.json') }}' 
+        });
+
+        // Tampilkan animasi saat halaman mulai dimuat
+        window.addEventListener("beforeunload", function() {
+            document.getElementById('loading-animation').style.display = 'flex';
+        });
+
+        // Sembunyikan animasi setelah halaman selesai dimuat
+        window.addEventListener("load", function() {
+            document.getElementById('loading-animation').style.display = 'none';
+        });
   </script>
 
 </body>
