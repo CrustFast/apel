@@ -7,7 +7,13 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     "./node_modules/flowbite/**/*.js",
-    'node_modules/preline/dist/*.js',
+    './node_modules/preline/dist/*.js',
+  ],
+  safelist: [
+    {
+      pattern: /^datatable-.*/,
+      variants: ['responsive', 'hover', 'focus'],
+    },
   ],
   theme: {
     extend: {
