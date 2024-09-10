@@ -1,6 +1,6 @@
 <div id="kategori-pengaduan-section">
     <label for="kategori-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">
-        Kategori Pengaduan <span class="text-red-600">*</span>
+        4. Kategori Pengaduan <span class="text-red-600">*</span>
     </label>
     <div class="relative mt-3">
         <select id="kategori-pengaduan" name="kategori-pengaduan" wire:model="kategori_pengaduan_id"
