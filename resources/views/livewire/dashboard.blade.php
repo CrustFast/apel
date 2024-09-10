@@ -73,13 +73,13 @@
         <ul class="space-y-1.5">
           <li>
             <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-700 dark:text-white" href="#">
-              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined"><path d="M12 16v5"/><path d="M16 14v7"/><path d="M20 10v11"/><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/><path d="M4 18v3"/><path d="M8 14v7"/></svg>
+              <svg class="size-4 text-blue-bmti" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined"><path d="M12 16v5"/><path d="M16 14v7"/><path d="M20 10v11"/><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/><path d="M4 18v3"/><path d="M8 14v7"/></svg>
               Dashboard
             </a>
           </li>
           <li class="hs-accordion" id="internal-accordion">
             <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-neutral-800 dark:text-neutral-400 dark:hs-accordion-active:text-white dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300" aria-expanded="false" aria-controls="internal-accordion-content">
-              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+              <svg class="size-4 text-blue-bmti" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
               Internal
               <svg class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
               <svg class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -101,7 +101,7 @@
           </li>
           <li class="hs-accordion" id="eksternal-accordion">
             <button type="button" class="hs-accordion-toggle hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:bg-neutral-800 dark:text-neutral-400 dark:hs-accordion-active:text-white dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300" aria-expanded="false" aria-controls="eksternal-accordion-content">
-              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+              <svg class="size-4 text-blue-bmti" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
               Eksternal
               <svg class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
               <svg class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -126,8 +126,8 @@
               </ul>
             </div>
           </li>
-          <li><a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300" href="#">
-            <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+          <li><a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300" href="{{ route('home.view') }}">
+            <svg class="size-4 text-blue-bmti" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
             Sign Out
           </a></li>
         </ul>
@@ -142,19 +142,19 @@
         <!-- Card -->
         <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-800">
           <div class="p-4 md:p-5 flex gap-x-4">
-            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg dark:bg-neutral-800">
-              <svg class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-plus"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M9 15h6"/><path d="M12 18v-6"/></svg>
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-indigo-50 rounded-lg dark:bg-neutral-800">
+              <svg class="shrink-0 size-5 text-blue-bmti dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-plus"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M9 15h6"/><path d="M12 18v-6"/></svg>
             </div>
 
             <div class="grow">
               <div class="flex items-center gap-x-2">
                 <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
-                  Total Pengaduan
+                  Total Aduan
                 </p>
               </div>
               <div class="mt-1 flex items-center gap-x-2">
                 <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                  72,540
+                  184
                 </h3>
                 <span class="inline-flex items-center gap-x-1 py-0.5 px-2 rounded-full bg-green-100 text-green-900 dark:bg-green-800 dark:text-green-100">
                   <svg class="inline-block size-4 self-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
@@ -171,8 +171,8 @@
         <!-- Card -->
         <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-800">
           <div class="p-4 md:p-5 flex gap-x-4">
-            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg dark:bg-neutral-800">
-              <svg class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-input"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></svg>
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-indigo-50 rounded-lg dark:bg-neutral-800">
+              <svg class="shrink-0 size-5 text-blue-bmti dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-input"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></svg>
             </div>
 
             <div class="grow">
@@ -183,7 +183,7 @@
               </div>
               <div class="mt-1 flex items-center gap-x-2">
                 <h3 class="text-xl font-medium text-gray-800 dark:text-neutral-200">
-                  29.4%
+                  73
                 </h3>
               </div>
             </div>
@@ -194,8 +194,8 @@
         <!-- Card -->
         <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-800">
           <div class="p-4 md:p-5 flex gap-x-4">
-            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg dark:bg-neutral-800">
-              <svg class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-clock"><path d="M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="8" cy="16" r="6"/><path d="M9.5 17.5 8 16.25V14"/></svg>
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-indigo-50 rounded-lg dark:bg-neutral-800">
+              <svg class="shrink-0 size-5 text-blue-bmti dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-clock"><path d="M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="8" cy="16" r="6"/><path d="M9.5 17.5 8 16.25V14"/></svg>
             </div>
 
             <div class="grow">
@@ -206,7 +206,7 @@
               </div>
               <div class="mt-1 flex items-center gap-x-2">
                 <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                  56.8%
+                  12
                 </h3>
                 <span class="inline-flex items-center gap-x-1 py-0.5 px-2 rounded-full bg-red-100 text-red-900 dark:bg-red-800 dark:text-red-100">
                   <svg class="inline-block size-4 self-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
@@ -223,8 +223,8 @@
         <!-- Card -->
         <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-800">
           <div class="p-4 md:p-5 flex gap-x-4">
-            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg dark:bg-neutral-800">
-              <svg class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-indigo-50 rounded-lg dark:bg-neutral-800">
+              <svg class="shrink-0 size-5 text-blue-bmti dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
             </div>
 
             <div class="grow">
@@ -235,7 +235,7 @@
               </div>
               <div class="mt-1 flex items-center gap-x-2">
                 <h3 class="text-xl font-medium text-gray-800 dark:text-neutral-200">
-                  92,913
+                  99
                 </h3>
               </div>
             </div>
@@ -249,27 +249,21 @@
       <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 mt-6">
         <!-- Pie Chart -->
         <div class="p-4 bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-800">
-          <div class="flex flex-col justify-center items-center h-[300px] mt-6">
-            <div id="hs-pie-chart" class="mb-6"></div>
+          <div class="flex flex-col justify-center items-center h-[300px] mt-10">
+            <div id="hs-pie-chart"></div>
 
             <!-- Legend Indicator -->
-            <div class="flex justify-center sm:justify-end items-center gap-x-4 mt-3 sm:mt-6">
+            <div class="flex justify-center sm:justify-end items-center gap-x-5 sm:mt-6 mt-6">
               <div class="inline-flex items-center">
                 <span class="size-2.5 inline-block bg-blue-600 rounded-sm me-2"></span>
                 <span class="text-[13px] text-gray-600 dark:text-neutral-400">
-                  Income
+                  Internal
                 </span>
               </div>
               <div class="inline-flex items-center">
                 <span class="size-2.5 inline-block bg-cyan-500 rounded-sm me-2"></span>
                 <span class="text-[13px] text-gray-600 dark:text-neutral-400">
-                  Outcome
-                </span>
-              </div>
-              <div class="inline-flex items-center">
-                <span class="size-2.5 inline-block bg-gray-300 rounded-sm me-2 dark:bg-neutral-700"></span>
-                <span class="text-[13px] text-gray-600 dark:text-neutral-400">
-                  Others
+                  Eksternal
                 </span>
               </div>
             </div>
@@ -285,13 +279,13 @@
             <div class="inline-flex items-center">
               <span class="size-2.5 inline-block bg-blue-600 rounded-sm me-2"></span>
               <span class="text-[13px] text-gray-600 dark:text-neutral-400">
-                Income
+                Internal
               </span>
             </div>
             <div class="inline-flex items-center">
               <span class="size-2.5 inline-block bg-gray-300 rounded-sm me-2 dark:bg-neutral-700"></span>
               <span class="text-[13px] text-gray-600 dark:text-neutral-400">
-                Outcome
+                Eksternal
               </span>
             </div>
           </div>
@@ -314,10 +308,10 @@
                 <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
                   <div>
                     <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-                      Pengaduan
+                      SIAP
                     </h2>
                     <p class="text-sm text-gray-600 dark:text-neutral-400">
-                      Pengaduan Internal dan Pengaduan Eksternal
+                      Laporan Pengaduan Gratifikasi
                     </p>
                   </div>
 
@@ -341,16 +335,16 @@
                   <thead class="bg-gray-50 dark:bg-neutral-800">
                     <tr>
                       <th scope="col" class="ps-6 py-3 text-start">
-                        <label for="hs-at-with-checkboxes-main" class="flex">
+                        {{-- <label for="hs-at-with-checkboxes-main" class="flex">
                           <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-main">
                           <span class="sr-only">Checkbox</span>
-                        </label>
+                        </label> --}}
                       </th>
 
                       <th scope="col" class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3 text-start">
                         <div class="flex items-center gap-x-2">
                           <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                            Name
+                            Nama Pelapor
                           </span>
                         </div>
                       </th>
@@ -358,7 +352,7 @@
                       <th scope="col" class="px-6 py-3 text-start">
                         <div class="flex items-center gap-x-2">
                           <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                            Position
+                            Tanggal Penerimaan/Penolakan
                           </span>
                         </div>
                       </th>
@@ -374,7 +368,7 @@
                       <th scope="col" class="px-6 py-3 text-start">
                         <div class="flex items-center gap-x-2">
                           <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                            Portfolio
+                            Jenis Laporan
                           </span>
                         </div>
                       </th>
@@ -382,7 +376,7 @@
                       <th scope="col" class="px-6 py-3 text-start">
                         <div class="flex items-center gap-x-2">
                           <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                            Created
+                            Tanggal Dilaporkan
                           </span>
                         </div>
                       </th>
@@ -395,27 +389,25 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-1" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-1" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-1">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3">
                           <div class="flex items-center gap-x-3">
-                            <img class="inline-block size-[38px] rounded-full" src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Avatar">
+                            {{-- <img class="inline-block size-[38px] rounded-full" src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Avatar"> --}}
                             <div class="grow">
-                              <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Christina Bersh</span>
-                              <span class="block text-sm text-gray-500 dark:text-neutral-500">christina@site.com</span>
+                              <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Wawan</span>
                             </div>
                           </div>
                         </div>
                       </td>
                       <td class="h-px w-72 whitespace-nowrap">
                         <div class="px-6 py-3">
-                          <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Director</span>
-                          <span class="block text-sm text-gray-500 dark:text-neutral-500">Human resources</span>
+                          <span class="text-sm text-gray-500 dark:text-neutral-500">28 Dec, 12:12</span>
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -424,18 +416,13 @@
                             <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                             </svg>
-                            Active
+                            Selesai
                           </span>
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
                         <div class="px-6 py-3">
-                          <div class="flex items-center gap-x-3">
-                            <span class="text-xs text-gray-500 dark:text-neutral-500">1/5</span>
-                            <div class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700">
-                              <div class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-neutral-200" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
+                          <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Penerimaan</span>
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -455,10 +442,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-2" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-2" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-2">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -484,7 +471,7 @@
                             <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                               <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                             </svg>
-                            Warning
+                            Ditinjut
                           </span>
                         </div>
                       </td>
@@ -515,10 +502,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-3" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-3" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-3">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -577,10 +564,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-4" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-4" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-4">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -637,10 +624,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-5" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-5" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-5">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -698,10 +685,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-6" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-6" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-6">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -758,10 +745,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-7" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-7" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-7">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -818,10 +805,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-8" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-8" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-8">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -878,10 +865,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-9" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-9" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-9">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -939,10 +926,10 @@
                     <tr>
                       <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-3">
-                          <label for="hs-at-with-checkboxes-10" class="flex">
+                          {{-- <label for="hs-at-with-checkboxes-10" class="flex">
                             <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-10">
                             <span class="sr-only">Checkbox</span>
-                          </label>
+                          </label> --}}
                         </div>
                       </td>
                       <td class="size-px whitespace-nowrap">
@@ -1061,54 +1048,60 @@
           var pieOptions = {
             chart: {
               type: 'pie',
-              height: '100%'
+              height: 350, 
+              width: 350,  
             },
-            series: [44, 55, 13],
-            labels: ['Income', 'Outcome', 'Others'],
-            colors: ['#1E40AF', '#06B6D4', '#D1D5DB'],
+            series: [44, 55],
+            labels: ['Internal', 'Eksternal'],
+            colors: ['#facc15', '#208AEB'],
           }
 
           var pieChart = new ApexCharts(document.querySelector("#hs-pie-chart"), pieOptions);
           pieChart.render();
 
           var barOptions = {
-            chart: {
-              type: 'bar',
-              height: '100%'
-            },
-            series: [{
-              name: 'Income',
-              data: [44, 55, 41, 37, 22, 43, 21, 54, 67, 82, 91, 66]
-            }, {
-              name: 'Outcome',
-              data: [53, 32, 33, 52, 13, 43, 32, 44, 55, 61, 72, 85]
-            }],
-            colors: ['#1E40AF', '#D1D5DB'],
-            xaxis: {
-              categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-            dataLabels: {
-              enabled: false
-            },
-            legend: {
-              show: false
-            },
-            plotOptions: {
-              bar: {
-                columnWidth: '50%'
-              }
-            },
-            yaxis: {
-              labels: {
-                formatter: function (value) {
-                  return value + 'k';
-                }
+          chart: {
+            type: 'bar',
+            height: '100%'
+          },
+          series: [{
+            name: 'Internal', 
+            data: [44, 55, 41, 37, 22, 43, 21, 54, 67, 82, 91, 66] 
+          }, {
+            name: 'Eksternal', 
+            data: [35, 41, 62, 42, 13, 23, 20, 48, 77, 56, 81, 72] 
+          }],
+          colors: ['#1E40AF', '#CBD5E1'], 
+          xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+          },
+          dataLabels: {
+            enabled: false
+          },
+          legend: {
+            show: true 
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '50%',
+              dataLabels: {
+                position: 'top', 
+              },
+              endingShape: 'rounded'
+            }
+          },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value; 
               }
             }
           }
+        }
 
-          var barChart = new ApexCharts(document.querySelector("#hs-multiple-bar-charts"), barOptions);
-          barChart.render();
+        var barChart = new ApexCharts(document.querySelector("#hs-multiple-bar-charts"), barOptions);
+        barChart.render();
+
         });
       </script>
 

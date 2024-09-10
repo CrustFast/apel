@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <!-- Alpine JS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
     {{-- Filepond --}}
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
@@ -34,7 +34,7 @@
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Layanan Pengaduan Eksternal - FAST SOLUTION</title>
+    <title>Layanan Pengaduan Eksternal - SIGAP</title>
 
     <style>
         /* lottie */

@@ -18,16 +18,13 @@
   <!-- Font Tailwind -->
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-  <!-- Alpine JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <!-- Livewire -->
   @livewireStyles
 
-  <title>Sistem Informasi Pengaduan dan Pengawasan - SIGAP</title>
+  <title>Sistem Terintegrasi Pengendalian dan Pengawasan | STTP</title>
 
   <style>
     .custom-scrollbar::-webkit-scrollbar {
@@ -116,10 +113,10 @@
   <!-- Navbar -->
   <nav id="navbar" class="navbar flex items-center justify-between p-4 lg:px-8 text-white" aria-label="Global" x-data="{ isOpen: false, solutionsOpen: false }">
     <div class="flex lg:flex-1">
-      <a href="{{ route('home.view') }}" class="-m-1.5 p-1 flex items-center">
+      <a href="{{ route('login.view') }}" class="-m-1.5 p-1 flex items-center">
         <span class="sr-only">BBPPMPV BMTI</span>
         <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
-        <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">SIGAP</h1>
+        <h1 class="flex items-center ml-2 font-bold text-lg sm:text-xl">STPP</h1>
       </a>
     </div>
     <div class="flex lg:hidden">
@@ -131,19 +128,19 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
-      <a href="#" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300">
+      <a href="#" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300" data-aos="fade-down" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500">
         Beranda
         <span class="block h-1 w-0 bg-white rounded-full mt-1 mx-auto transition-all duration-300 group-hover:w-10"></span>
       </a>
-      <a href="#panduan" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300">
+      <a href="#panduan" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300" data-aos="fade-down" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" data-aos-delay="200">
         Panduan Pengisian 
         <span class="block h-1 w-0 bg-white rounded-full mt-1 mx-auto transition-all duration-300 group-hover:w-10"></span>
       </a>
-      <a href="#cekStatus" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300">
+      <a href="#cekStatus" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300" data-aos="fade-down" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" data-aos-delay="400">
         Cek Status Pengaduan
         <span class="block h-1 w-0 bg-white rounded-full mt-1 mx-auto transition-all duration-300 group-hover:w-10"></span>
       </a>
-      <div class="relative" x-data="{ open: false }">
+      <div class="relative" x-data="{ open: false }" data-aos="fade-down" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" data-aos-delay="600">
         <button @mouseenter="open = true" @mouseleave="open = false" type="button" class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-white" aria-expanded="false">
           <span>Layanan Publik</span>
           <svg :class="{'rotate-180': open}" class="h-5 w-5 flex-none text-gray-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -165,10 +162,10 @@
                 </div>
                 <div>
                   <a href="{{ route('internal.view') }}" target="_blank" class="font-semibold text-gray-900">
-                    SIAP
+                    AKSI
                     <span class="absolute inset-0"></span>
                   </a>
-                  <p class="mt-1 text-gray-600">Sistem Informasi dan Pelaporan Gratifikasi</p>
+                  <p class="mt-1 text-gray-600">Aplikasi Kendali Laporan Gratifikasi</p>
                 </div>
               </div>
               <div class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
@@ -180,7 +177,7 @@
                     KONFES
                     <span class="absolute inset-0"></span>
                   </a>
-                  <p class="mt-1 text-gray-600">Layanan untuk mengadukan Benturan Kepentingan</p>
+                  <p class="mt-1 text-gray-600">Kontrol Benturan Kepentingan Sistematis</p>
                 </div>
               </div>
               <div class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
@@ -189,7 +186,7 @@
                 </div>
                 <div>
                   <a href="{{ route('eksternal.view') }}" target="_blank" class="font-semibold text-gray-900">
-                    FAST SOLUTION
+                    SIGAP
                     <span class="absolute inset-0"></span>
                   </a>
                   <p class="mt-1 text-gray-600">Layanan untuk mengadukan kerusakan, permintaan informasi, dan pemberian saran</p>
@@ -215,7 +212,7 @@
       </div>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="{{ route('home.view') }}" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300">
+      <a href="https://bbppmpvbmti.kemdikbud.go.id/main/" class="relative group text-sm font-semibold leading-6 text-white hover:text-gray-300 transition-all duration-300">
         Home <span aria-hidden="true">&rarr;</span>
         <span class="absolute left-0 bottom-0 h-0.5 w-0 bg-white rounded-full mt-1 transition-all duration-300 group-hover:w-10"></span>
       </a>
@@ -233,10 +230,10 @@
       </div>
       <div class="flex flex-col items-center justify-center mx-auto max-w-7xl px-8 mt-5 lg:px-8">
         <div class="flex flex-col items-center justify-center mx-auto max-w-2xl lg:mx-0">
-          <img src="{{ asset('img/logo-bmti.png') }}" alt="logo bmti" class="h-24 sm:h-28 md:h-28 lg:h-28 xl:h-28 w-auto mb-5 " data-aos="zoom-in" data-aos-duration="1000">
-          <h2 class="text-4xl font-bold text-white sm:text-5xl tracking-wider mt-8 sm:mt-10">SIGAP</h2>
-          <p class="mt-2 text-lg leading-8 text-gray-300 text-center">Sistem Informasi Pengaduan dan Pengawasan</p>
-          <a href="#pengaduan" class="float-animation mt-9 pr-6 inline-flex items-center rounded-3xl border border-gray-300 px-3.5 py-2.5 text-sm font-semibold text-gray-300 shadow-sm hover:bg-gray-300 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 transition-colors duration-300">
+          <img src="{{ asset('img/logo-bmti.png') }}" alt="logo bmti" class="h-24 sm:h-28 md:h-28 lg:h-28 xl:h-28 w-auto mb-5" data-aos="zoom-in" data-aos-duration="1000">
+          <h2 class="text-4xl font-bold text-white sm:text-5xl tracking-wider mt-8 sm:mt-10" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">STPP</h2>
+          <p class="mt-2 text-lg leading-8 text-gray-300 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">Sistem Terintegrasi Pengendalian dan Pengawasan</p>
+          <a href="#pengaduan" class="float-animation mt-9 pr-6 inline-flex items-center rounded-3xl border border-gray-300 px-3.5 py-2.5 text-sm font-semibold text-gray-300 shadow-sm hover:bg-gray-300 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 transition-colors duration-300" data-aos-anchor-placement="center-bottom" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mx-2 h-6 w-5">
               <path fill-rule="evenodd" d="M11.47 13.28a.75.75 0 0 0 1.06 0l7.5-7.5a.75.75 0 0 0-1.06-1.06L12 11.69 5.03 4.72a.75.75 0 0 0-1.06 1.06l7.5 7.5Z" clip-rule="evenodd" />
               <path fill-rule="evenodd" d="M11.47 19.28a.75.75 0 0 0 1.06 0l7.5-7.5a.75.75 0 1 0-1.06-1.06L12 17.69l-6.97-6.97a.75.75 0 0 0-1.06 1.06l7.5 7.5Z" clip-rule="evenodd" />
@@ -252,11 +249,11 @@
     <div class="flex justify-center mt-8 mb-16 pt-36">
       <div class="max-w-7xl px-6 lg:px-6">
         <div class="mx-auto max-w-2xl text-center mb-12">
-          <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Selamat Datang di Form Pengaduan BMTI!</h2>
-          <p class="mt-6 text-md leading-8 text-gray-500">Untuk memastikan setiap aduan ditangani dengan tepat, kami menyediakan dua kategori layanan pengaduan:</p>
+          <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative" data-aos="fade-up" data-aos-duration="1000">Selamat Datang di Form Pengaduan BMTI!</h2>
+          <p class="mt-6 text-md leading-8 text-gray-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Untuk memastikan setiap aduan ditangani dengan tepat, kami menyediakan dua kategori layanan pengaduan:</p>
         </div>
         <div class="grid max-w-2xl grid-cols-1 gap-x-52 gap-y-16 sm:gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div class="card max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div class="card max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="400">
             <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
             <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Layanan Pengaduan Internal</h5>
             <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan untuk Melaporkan Gratifikasi dan benturan kepentingan? Kami Siap Membantu!</p>
@@ -292,8 +289,8 @@
                       <input type="radio" id="silagra" name="job" value="silagra" class="hidden peer" required />
                       <label for="silagra" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500" onclick="window.location='{{ route('internal.view') }}'">
                         <div class="block">
-                          <div class="w-full text-lg font-semibold">SIAP</div>
-                          <div class="w-full text-gray-500 dark:text-gray-400">Sistem Informasi dan Pengaduan Gratifikasi</div>
+                          <div class="w-full text-lg font-semibold">AKSI</div>
+                          <div class="w-full text-gray-500 dark:text-gray-400">Aplikasi Kendali Laporan Gratifikasi</div>
                         </div>
                         <svg class="w-4 h-4 ms-3 rtl:rotate-180 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -305,8 +302,7 @@
                       <label for="job-2" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500"  onclick="window.location='{{ route('benturan-kepentingan.view') }}'">
                         <div class="block">
                           <div class="w-full text-lg font-semibold">KONFES</div>
-                          <div class="w-full text-gray-500 dark:text-gray-400">Konflik dan Kepentingan Sistem
-                          </div>
+                          <div class="w-full text-gray-500 dark:text-gray-400">Kontrol Benturan Kepentingan Sistematis</div>
                         </div>
                         <svg class="w-4 h-4 ms-3 rtl:rotate-180 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -319,7 +315,7 @@
             </div>
           </div>
         
-          <div class="card max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div class="card max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="600">
             <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-bmti.png') }}" alt="Logo BMTI">
             <h5 class="mb-2 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Layanan Pengaduan Eksternal</h5>
             <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Butuh Bantuan atau Ingin Memberikan Masukan? Kami Siap Mendengarkan!</p>
@@ -338,19 +334,19 @@
   <section id="panduan">
     <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div class="mx-auto max-w-2xl text-center mb-12">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Panduan Penggunaan</h2>
-        <p class="mt-6 text-md leading-8 text-gray-500">Untuk membantu Anda dalam proses ini, kami telah menyusun panduan penggunaan yang akan memandu Anda melalui setiap langkah pengajuan aduan:</p>
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative" data-aos="fade-up" data-aos-duration="1000">Panduan Penggunaan</h2>
+        <p class="mt-6 text-md leading-8 text-gray-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Untuk membantu Anda dalam proses ini, kami telah menyusun panduan penggunaan yang akan memandu Anda melalui setiap langkah pengajuan aduan:</p>
       </div>
       <div class="grid gap-8 row-gap-0 lg:grid-cols-3">
         <div class="relative text-center">
-          <div class="flex items-center justify-center w-16 h-16 shadow-md mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20">
+          <div class="flex items-center justify-center w-16 h-16 shadow-md mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="400">
             <svg class="w-12 h-12 text-blue-bmti sm:w-16 sm:h-16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M15 4v3a1 1 0 0 1-1 1h-3m2 10v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7.13a1 1 0 0 1 .24-.65L6.7 8.35A1 1 0 0 1 7.46 8H9m-1 4H4m16-7v10a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V7.87a1 1 0 0 1 .24-.65l2.46-2.87a1 1 0 0 1 .76-.35H19a1 1 0 0 1 1 1Z"/>
             </svg>            
           </div>
-          <h6 class="mb-2 text-2xl font-extrabold">Step 1</h6>
-          <p class="text-gray-900 font-semibold mb-1">Pilih Klasifikasi Laporan</p>
-          <p class="max-w-md mb-3 text-sm text-gray-500 sm:mx-auto">Mulai dengan memilih kategori yang paling sesuai untuk aduan Anda. Pilihan ini akan memastikan bahwa aduan Anda diteruskan ke departemen yang tepat untuk penanganan yang cepat dan tepat.</p>
+          <h6 class="mb-2 text-2xl font-extrabold" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">Step 1</h6>
+          <p class="text-gray-900 font-semibold mb-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">Pilih Klasifikasi Laporan</p>
+          <p class="max-w-md mb-3 text-sm text-gray-500 sm:mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700">Mulai dengan memilih kategori yang paling sesuai untuk aduan Anda. Pilihan ini akan memastikan bahwa aduan Anda diteruskan ke departemen yang tepat untuk penanganan yang cepat dan tepat.</p>
           <div class="top-0 right-0 flex items-center justify-center h-24 lg:-mr-8 lg:absolute">
             <svg class="w-8 text-gray-700 transform rotate-90 lg:rotate-0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line fill="none" stroke-miterlimit="10" x1="2" y1="12" x2="22" y2="12"></line>
@@ -359,14 +355,14 @@
           </div>
         </div>
         <div class="relative text-center">
-          <div class="flex items-center justify-center w-16 h-16 shadow-md mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20">
+          <div class="flex items-center justify-center w-16 h-16 shadow-md mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="600">
             <svg class="w-12 h-12 text-blue-bmti sm:w-16 sm:h-16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 5V4a1 1 0 0 0-1-1H8.914a1 1 0 0 0-.707.293L4.293 7.207A1 1 0 0 0 4 7.914V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5M9 3v4a1 1 0 0 1-1 1H4m11.383.772 2.745 2.746m1.215-3.906a2.089 2.089 0 0 1 0 2.953l-6.65 6.646L9 17.95l.739-3.692 6.646-6.646a2.087 2.087 0 0 1 2.958 0Z"/>
             </svg>            
           </div>
-          <h6 class="mb-2 text-2xl font-extrabold">Step 2</h6>
-          <p class="text-gray-900 font-semibold mb-1">Isi Formulir Pengaduan</p>
-          <p class="max-w-md mb-3 text-sm text-gray-500 sm:mx-auto">Lengkapi formulir dengan informasi yang dibutuhkan. Pastikan Anda memberikan deskripsi yang jelas dan lengkap dari masalah yang Anda hadapi.</p>
+          <h6 class="mb-2 text-2xl font-extrabold" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">Step 2</h6>
+          <p class="text-gray-900 font-semibold mb-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700">Isi Formulir Pengaduan</p>
+          <p class="max-w-md mb-3 text-sm text-gray-500 sm:mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">Lengkapi formulir dengan informasi yang dibutuhkan. Pastikan Anda memberikan deskripsi yang jelas dan lengkap dari masalah yang Anda hadapi.</p>
           <div class="top-0 right-0 flex items-center justify-center h-24 lg:-mr-8 lg:absolute">
             <svg class="w-8 text-gray-700 transform rotate-90 lg:rotate-0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line fill="none" stroke-miterlimit="10" x1="2" y1="12" x2="22" y2="12"></line>
@@ -375,14 +371,14 @@
           </div>
         </div>
         <div class="relative text-center">
-          <div class="flex items-center justify-center w-16 h-16 shadow-md mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20">
+          <div class="flex items-center justify-center w-16 h-16 shadow-md mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="800">
             <svg class="w-12 h-12 text-blue-bmti sm:w-16 sm:h-16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 3v4a1 1 0 0 1-1 1H5m4 6 2 2 4-4m4-8v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z"/>
             </svg>                       
           </div>
-          <h6 class="mb-2 text-2xl font-extrabold">Step 3</h6>
-          <p class="text-gray-900 font-semibold mb-1">Status Aduan</p>
-          <p class="max-w-md mb-3 text-sm text-gray-500 sm:mx-auto">Setelah pengajuan, simpan ID pengaduan yang Anda terima. ID ini akan memungkinkan Anda untuk melacak perkembangan penanganan aduan Anda melalui opsi 'Cek Status Pengaduan'.</p>
+          <h6 class="mb-2 text-2xl font-extrabold" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900">Step 3</h6>
+          <p class="text-gray-900 font-semibold mb-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">Status Aduan</p>
+          <p class="max-w-md mb-3 text-sm text-gray-500 sm:mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100">Setelah pengajuan, simpan ID pengaduan yang Anda terima. ID ini akan memungkinkan Anda untuk melacak perkembangan penanganan aduan Anda melalui opsi 'Cek Status Pengaduan'.</p>
         </div>
       </div>
     </div>
@@ -391,12 +387,12 @@
   <!-- Cek Status Pengaduan -->
   <section id="cekStatus">
     <div class="mx-auto max-w-2xl text-center mb-12 pt-36 px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Cek Status Pengaduan Anda</h2>
-      <p class="mt-6 text-md leading-8 text-gray-500">Layanan ini memungkinkan Anda untuk memantau perkembangan dan penanganan aduan yang telah Anda sampaikan.</p>
+      <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative" data-aos="fade-up" data-aos-duration="1000">Cek Status Pengaduan Anda</h2>
+      <p class="mt-6 text-md leading-8 text-gray-500" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Layanan ini memungkinkan Anda untuk memantau perkembangan dan penanganan aduan yang telah Anda sampaikan.</p>
     </div>
     <form class="flex items-center max-w-sm mx-auto mb-6 px-4 sm:px-6 lg:px-8">   
       <label for="simple-search" class="sr-only">Search</label>
-      <div class="relative w-full">
+      <div class="relative w-full" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="600">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z"/>
@@ -404,7 +400,7 @@
         </div>
         <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan id pengaduan anda..." required />
       </div>
-      <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <button data-aos="zoom-in" data-aos-duration="500" data-aos-delay="800" type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
         </svg>
@@ -415,12 +411,12 @@
 
   <section id="manfaat">
     <div class="mx-auto max-w-2xl text-center mb-12 pt-36 px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Manfaat Pengaduan Masyarakat</h2>
-      <p class="mt-6 text-md leading-8 text-gray-500">Manfaat-manfaat ini menunjukkan betapa pentingnya sistem pengaduan masyarakat bagi kami dalam upaya untuk terus meningkatkan layanan dan menjawab kebutuhan masyarakat dengan lebih baik.</p>
+      <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative" data-aos="fade-up" data-aos-duration="1000">Manfaat Pengaduan Masyarakat</h2>
+      <p class="mt-6 text-md leading-8 text-gray-500"  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Manfaat-manfaat ini menunjukkan betapa pentingnya sistem pengaduan masyarakat bagi kami dalam upaya untuk terus meningkatkan layanan dan menjawab kebutuhan masyarakat dengan lebih baik.</p>
     </div>
     <div class="grid max-w-screen-lg gap-8 row-gap-10 mx-auto lg:grid-cols-2 px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-        <div class="mr-4">
+        <div class="mr-4" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200">
           <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50 shadow-md">
             <svg class="h-5 w-5 flex-none text-blue-bmti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd" />
@@ -430,14 +426,14 @@
           </div>
         </div>
         <div>
-          <h6 class="mb-3 text-xl font-bold leading-5">Perbaikan Sistem dan Prosedur</h6>
-          <p class="mb-3 text-sm text-gray-700">
+          <h6 class="mb-3 text-xl font-bold leading-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">Perbaikan Sistem dan Prosedur</h6>
+          <p class="mb-3 text-sm text-gray-700"  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
             Dengan melaporkan masalah, manajemen dapat mengidentifikasi dan memperbaiki kekurangan dalam sistem atau prosedur, sehingga meningkatkan kualitas layanan.
           </p>
         </div>
       </div>
       <div class="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-        <div class="mr-4">
+        <div class="mr-4" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
           <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50 shadow-md">
             <svg class="h-5 w-5 flex-none text-blue-bmti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 0 3-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 0 0-.673-.05A3 3 0 0 0 15 1.5h-1.5a3 3 0 0 0-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6ZM13.5 3A1.5 1.5 0 0 0 12 4.5h4.5A1.5 1.5 0 0 0 15 3h-1.5Z" clip-rule="evenodd" />
@@ -446,14 +442,14 @@
           </div>
         </div>
         <div>
-          <h6 class="mb-3 text-xl font-bold leading-5">Efisiensi dan Efektivitas</h6>
-          <p class="mb-3 text-sm text-gray-700">
+          <h6 class="mb-3 text-xl font-bold leading-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Efisiensi dan Efektivitas</h6>
+          <p class="mb-3 text-sm text-gray-700" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
             Pengaduan membantu mengoptimalkan proses kerja dan meningkatkan kinerja organisasi.
           </p>
         </div>
       </div>
       <div class="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-        <div class="mr-4">
+        <div class="mr-4" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="400">
           <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50 shadow-md">
             <svg class="h-5 w-5 flex-none text-blue-bmti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z" clip-rule="evenodd" />
@@ -462,14 +458,14 @@
           </div>
         </div>
         <div>
-          <h6 class="mb-3 text-xl font-bold leading-5">Hubungan yang Lebih Kuat dengan Stakeholder</h6>
-          <p class="mb-3 text-sm text-gray-700">
+          <h6 class="mb-3 text-xl font-bold leading-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">Hubungan yang Lebih Kuat dengan Stakeholder</h6>
+          <p class="mb-3 text-sm text-gray-700" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
             Menanggapi pengaduan dengan cepat dan efektif dapat memperkuat kepercayaan dan hubungan antara BBPPMPV BMTI dan para pemangku kepentingannya.
           </p>
         </div>
       </div>
       <div class="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-        <div class="mr-4">
+        <div class="mr-4" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500">
           <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50 shadow-md">
             <svg class="h-5 w-5 flex-none text-blue-bmti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
@@ -477,8 +473,8 @@
           </div>
         </div>
         <div>
-          <h6 class="mb-3 text-xl font-bold leading-5">Tata Kelola yang Baik</h6>
-          <p class="mb-3 text-sm text-gray-700">
+          <h6 class="mb-3 text-xl font-bold leading-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">Tata Kelola yang Baik</h6>
+          <p class="mb-3 text-sm text-gray-700" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700">
             Pengaduan membantu memastikan bahwa BBPPMPV BMTI beroperasi dengan prinsip-prinsip transparansi, akuntabilitas, dan tanggung jawab.
           </p>
         </div>
@@ -488,7 +484,7 @@
   </section>
 
     <!-- Floating WhatsApp Icon -->
-    <a href="https://wa.me/628112242326" class="float" target="_blank">
+    <a href="https://wa.me/628112242326" class="float" target="_blank" data-aos="zoom-in" data-aos-duration="500">
       <i class="fa fa-whatsapp my-float"></i>
     </a>
   
@@ -497,19 +493,19 @@
     <section class="bg-white mt-14">
       <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <nav class="flex flex-wrap justify-center -mx-5 -my-2">
-          <div class="px-5 py-2">
+          <div class="px-5 py-2" data-aos="fade-up" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500">
             <a href="#" class="text-sm font-semibold leading-6 text-gray-500 hover:text-blue-bmti">Privacy</a>
           </div>
-          <div class="px-5 py-2">
+          <div class="px-5 py-2" data-aos="fade-up" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" data-aos-delay="200">
             <a href="#" class="text-sm font-semibold leading-6 text-gray-500 hover:text-blue-bmti">Blog</a>
           </div>
-          <div class="px-5 py-2">
+          <div class="px-5 py-2" data-aos="fade-up" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" data-aos-delay="400">
             <a href="#" class="text-sm font-semibold leading-6 text-gray-500 hover:text-blue-bmti">Tentang Kami</a>
           </div>
-          <div class="px-5 py-2">
+          <div class="px-5 py-2" data-aos="fade-up" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" data-aos-delay="600">
             <a href="#" class="text-sm font-semibold leading-6 text-gray-500 hover:text-blue-bmti">Ketentuan Layanan</a>
           </div>
-          <div class="px-5 py-2">
+          <div class="px-5 py-2" data-aos="fade-up" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" data-aos-delay="800">
             <a href="https://wa.me/628112242326" class="text-sm font-semibold leading-6 text-gray-500 hover:text-blue-bmti">Hubungi Kami</a>
           </div>
         </nav>

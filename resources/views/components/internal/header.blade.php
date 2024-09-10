@@ -3,7 +3,7 @@
     class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
   <div class="flex flex-col items-center justify-center mx-auto max-w-7xl px-6 lg:px-8">
     <div class="flex flex-col items-center justify-center mx-auto max-w-2xl lg:mx-0 text-center">
-      <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold text-white tracking-wider mt-5">Sistem Informasi dan Pelaporan Gratifikasi</h2>
+      <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-6xl font-bold text-white tracking-wider mt-5">Aplikasi Kendali Laporan Gratifikasi</h2>
       <p class="mt-6 text-lg leading-8 text-gray-300">Laporkan gratifikasi langsung kepada kami atau kepada instansi pemerintah berwenang dengan mudah dan aman.</p>
     </div>
   </div>
@@ -105,5 +105,6 @@
     </div>
   </div>
 </div>
+
 
 

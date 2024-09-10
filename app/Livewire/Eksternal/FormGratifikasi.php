@@ -70,43 +70,45 @@ class FormGratifikasi extends Component
     
     public function submit()
     {
-        Log::info('Memulai proses submit.');
-
-        // Log nilai input sebelum validasi
-        Log::info('Nilai tanggal penerimaan penolakan:', ['tanggal_penerimaan_penolakan' => $this->tanggal_penerimaan_penolakan]);
-        Log::info('Nilai tanggal dilaporkan:', ['tanggal_dilaporkan' => $this->tanggal_dilaporkan]);
+        Log::info('Submit method called.');
 
         try {
             $validatedData = $this->validate();
-            Log::info('Validasi berhasil.', $validatedData);
+            Log::info('Validation passed.', $validatedData);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::error('Validasi gagal.', $e->errors());
-            session()->flash('error', 'Validasi gagal.');
+            Log::error('Validation failed.', $e->errors());
+            session()->flash('error', 'Validation failed.');
             return;
         }
 
-        // Mengubah format tanggal sebelum menyimpan ke database
+        Log::info('Validated data:', $validatedData);
+
+        // Modify the date formats
         $validatedData['tanggal_penerimaan_penolakan'] = Carbon::parse($this->tanggal_penerimaan_penolakan)->format('Y-m-d');
         $validatedData['tanggal_dilaporkan'] = Carbon::parse($this->tanggal_dilaporkan)->format('Y-m-d');
 
-        // Log data yang akan disimpan
-        Log::info('Data yang diterima', $validatedData);
+        Log::info('Modified data:', $validatedData);
 
         // Handle file uploads
         $filePaths = [];
         if (!empty($this->files)) {
             foreach ($this->files as $file) {
-                $filePaths[] = $file->store('uploads', 'public'); // Save file and store the path
+                $filePaths[] = $file->store('uploads', 'public');
+                Log::info('File uploaded:', ['file' => $filePaths]);
             }
         }
 
-        // Add file paths to the data to be saved
         $validatedData['files'] = json_encode($filePaths);
+
+        Log::info('Final data to be saved:', $validatedData);
 
         try {
             LaporanGratifikasi::create($validatedData);
+            Log::info('Data successfully saved.');
 
-            Log::info('Data berhasil disimpan.');
+            // Dispatch browser event to trigger the modal
+            $this->dispatch('formSubmitted', ['pesan' => 'Terima Kasih, Laporan Anda Telah Kami Terima. Silakan cek email Anda untuk informasi status laporan.']);
+            Log::info('formSubmitted event dispatched.');
 
             session()->flash('message', 'Laporan berhasil disimpan.');
         } catch (\Exception $e) {

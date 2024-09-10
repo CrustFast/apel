@@ -10,6 +10,10 @@ use App\Livewire\Eksternal\FormGratifikasi;
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 
+Route::get('/login', function () {
+    return view('login.index');
+})->name('login.view');
+
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index']);
 

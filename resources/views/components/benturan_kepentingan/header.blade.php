@@ -1,5 +1,5 @@
 <div class="relative isolate overflow-hidden bg-white py-24 sm:py-32">
-  <img src="{{ asset('img/bg nopal 1.jpg ') }}" alt=""
+  <img src="{{ asset('img/bg-1.jpg ') }}" alt=""
     class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
   <div class="flex flex-col items-center justify-center mx-auto max-w-7xl px-6 lg:px-8">
     <div class="flex flex-col items-center justify-center mx-auto max-w-2xl lg:mx-0 text-center">

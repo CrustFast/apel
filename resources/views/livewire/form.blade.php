@@ -8,6 +8,7 @@
       <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl inline-block relative">Lengkapi Data dan Tuliskan Pengaduan</h2>
     </div>
     <form wire:submit.prevent="submit" class="mx-auto mt-3 max-w-xl sm:mt-20 bg-white shadow-xl rounded-lg p-6">
+      @csrf
       <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
         <div class="sm:col-span-2">
           <label for="klasifikasi-laporan" class="block text-base font-bold leading-6 text-gray-900 text-center">Pilih Klasifikasi Laporan</label>
@@ -15,56 +16,98 @@
             <div class="flex justify-center">
               <div class="flex flex-col sm:flex-row items-start gap-x-3 gap-y-3">
                 <div class="flex items-center">
-                  <input id="pengaduan" wire:model="klasifikasiLaporan" name="klasifikasiLaporan" type="radio" value="pengaduan" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
+                  <input id="pengaduan" wire:model="klasifikasi_laporan" name="klasifikasiLaporan" type="radio" value="pengaduan" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
                   <label for="pengaduan" class="block text-sm font-medium leading-6 text-gray-900 ml-2 text-left">Pengaduan</label>
                 </div>
                 <div class="flex items-center">
-                  <input id="permintaan-informasi" wire:model="klasifikasiLaporan" name="klasifikasiLaporan" type="radio" value="permintaan-informasi" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
+                  <input id="permintaan-informasi" wire:model="klasifikasi_laporan" name="klasifikasiLaporan" type="radio" value="permintaan-informasi" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
                   <label for="permintaan-informasi" class="block text-sm font-medium leading-6 text-gray-900 ml-2 text-left">Permintaan Informasi</label>
                 </div>
                 <div class="flex items-center">
-                  <input id="saran" wire:model="klasifikasiLaporan" name="klasifikasiLaporan" type="radio" value="saran" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
+                  <input id="saran" wire:model="klasifikasi_laporan" name="klasifikasiLaporan" type="radio" value="saran" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" onclick="toggleElements()">
                   <label for="saran" class="block text-sm font-medium leading-6 text-gray-900 ml-2 text-left">Saran</label>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        @error('klasifikasiLaporan') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
 
-        <div id="tanggal-pengaduan-section" class="hidden">
-          <label for="tanggal-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Tanggal Pengaduan</label>
-          <div class="mt-2.5 relative max-w-sm">
+        {{-- tanggal pengaduan --}}
+        <div id="tanggal-pengaduan-section">
+          <label for="tanggal_pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">
+            1. Tanggal Pengaduan<span class="text-red-600">*</span>
+          </label>
+          <div class="mt-3 relative max-w-sm" wire:ignore>
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
               </svg>
             </div>
-            <input datepicker datepicker-autohide datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+            <input
+              datepicker
+              datepicker-autohide
+              datepicker-buttons
+              datepicker-autoselect-today
+              type="text"
+              wire:model.lazy="tanggal_pengaduan"
+              @change-date.camel="@this.set('tanggal_pengaduan', $event.target.value)"
+              id="tanggal_pengaduan"
+              class="text-gray-900 text-sm rounded-lg border-1
+                @if($errors->has('tanggal_pengaduan')) 
+                  border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 
+                @elseif(strlen($tanggal_pengaduan) > 0) 
+                  border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 
+                @else 
+                  border-gray-300 
+                @endif
+                focus:ring-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Select date"
+            >
           </div>
+          @if ($errors->has('tanggal_pengaduan'))
+            <p class="mt-2 text-xs text-red-600 dark:text-red-400">
+              <span class="font-medium">Perhatian!</span> {{ $errors->first('tanggal_pengaduan') }}
+            </p>
+          @endif
         </div>
+        
+        {{-- jenis layanan --}}
         <div id="jenis-layanan-section">
-          <label for="jenis-layanan" class="block text-sm font-semibold leading-6 text-gray-900">Pilih Jenis Layanan</label>
-          <div class="mt-2.5">
-            <select id="jenis-layanan" name="jenis-layanan" autocomplete="jenis-layanan" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6" onchange="updateTipeOptions()">
-              <option value="" disabled selected>Pilih Jenis Layanan</option>
-              <option value="diklat">Diklat</option>
-              <option value="non-diklat">Non Diklat</option>
+          <label for="jenis-layanan" class="block text-sm font-semibold leading-6 text-gray-900">
+              Jenis Layanan <span class="text-red-600">*</span>
+          </label>
+          <div class="relative mt-3">
+              <select id="jenis-layanan" name="jenis-layanan" wire:model="jenis_layanan"
+                  class="block w-full rounded-lg border border-gray-300 py-2.5 px-2.5 text-gray-900 bg-transparent shadow-sm ring-0 focus:outline-none focus:ring-0 focus:border-blue-600 sm:text-sm sm:leading-6">
+                  <option value="">Pilih Jenis Layanan</option> 
+                  <option value="diklat">Diklat</option>
+                  <option value="non-diklat">Non Diklat</option>
+              </select>        
+          </div>
+          @if ($errors->has('jenis_layanan'))
+              <p class="mt-2 text-xs text-red-600 dark:text-red-400">
+                  <span class="font-medium">Perhatian!</span> {{ $errors->first('jenis_layanan') }}
+              </p>
+          @endif
+        </div>          
+      
+        {{-- tipe --}}
+        <div id="tipe-section" wire:ignore>
+          <label for="tipe" class="block text-sm font-semibold leading-6 text-gray-900">3. Tipe<span class="text-red-600">*</span></label>
+          <div class="mt-3">
+            <select wire:model="tipe" id="tipe" name="tipe" autocomplete="tipe-name" class="block w-full rounded-lg border border-gray-300 py-2.5 px-2.5 text-gray-900 bg-transparent shadow-sm ring-0 focus:outline-none focus:ring-0 focus:border-blue-600 sm:text-sm sm:leading-6" onchange="toggleFieldsBasedOnTipe()">
+              <option value="">Pilih Tipe</option>
             </select>
           </div>
         </div>
-        <div id="tipe-section" class="hidden">
-          <label for="tipe" class="block text-sm font-semibold leading-6 text-gray-900">Tipe</label>
-          <div class="mt-2.5">
-            <select id="tipe" name="tipe" autocomplete="tipe-name" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6" onchange="toggleFieldsBasedOnTipe()">
-              <option value="" disabled selected>Pilih Tipe</option>
-            </select>
-          </div>
-        </div>
-        @livewire('kategori-pengaduan') {{-- Memanggil Komponen Livewire Kategori Pengaduan --}}
+
+        {{-- kategori --}}
+        @livewire('kategori-pengaduan') 
         
         {{-- Fields baru untuk Peserta Diklat --}}
         <div id="peserta-diklat-fields" class="hidden">
+
+          {{-- Periode diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="periode-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Periode Diklat</label>
             <div date-rangepicker class="flex items-center mt-2">
@@ -87,6 +130,8 @@
             </div>
             </div>
           </div>
+
+          {{-- Nama diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Nama Diklat</label>
             <div class="relative mt-3">
@@ -94,6 +139,8 @@
               <label for="nama-diklat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Diklat</label>
             </div>
           </div>
+
+          {{-- Nama peserta diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-peserta-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Nama Peserta</label>
             <div class="relative mt-3">
@@ -101,13 +148,17 @@
               <label for="nama-peserta-diklat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Peserta</label>
             </div>
           </div>
+
+          {{-- Nomor telepon peserta diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nomor-telepon-peserta-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon Peserta Diklat</label>
-          <div class="relative mt-3">
-            <input type="text" id="nomor-telepon" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-            <label for="nomor-telepon" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            <div class="relative mt-3">
+              <input type="text" id="nomor-telepon" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="nomor-telepon" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            </div>
           </div>
-          </div>
+
+          {{-- Asal smk peserta diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="asal-smk-peserta-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Asal SMK</label>
             <div class="relative mt-3">
@@ -115,6 +166,8 @@
               <label for="asal-smk-peserta-diklat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Asal SMK</label>
             </div>
           </div>
+
+          {{-- Program Keahlian --}}
           <div class="sm:col-span-2 mt-6">
             <label for="program-keahlian" class="block text-sm font-semibold leading-6 text-gray-900">Program Keahlian</label>
             <div class="mt-2.5">
@@ -130,17 +183,32 @@
 
         {{-- Fields baru untuk Peserta PKL --}}
         <div id="peserta-pkl-fields" class="hidden">
+
+          {{-- Periode Magang --}}
           <div class="sm:col-span-2 mt-6">
             <label for="Tanggal-magang" class="block text-sm font-semibold leading-6 text-gray-900">Pilih Tanggal Magang</label>
-            <div class="relative mt-3 max-w-sm">
-              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
-              </svg>
+            <div date-rangepicker class="flex items-center mt-2">
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
+                    </svg>
+                </div>
+                <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mulai">
               </div>
-              <input datepicker datepicker-buttons datepicker-autoselect-today type="text" class="text-gray-900 text-sm rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select year">
+              <span class="mx-4 text-gray-500">to</span>
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
+                    </svg>
+                </div>
+                <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Akhir">
+            </div>
             </div>
           </div>
+
+          {{-- Nama Peserta PKL --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-peserta-pkl" class="block text-sm font-semibold leading-6 text-gray-900">Nama Peserta PKL</label>
             <div class="relative mt-3">
@@ -148,6 +216,8 @@
               <label for="nama-peserta-pkl" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Peserta PKL</label>
             </div>
           </div>
+
+          {{-- Asal smk peserta pkl --}}
           <div class="sm:col-span-2 mt-6">
             <label for="asal-smk-peserta-pkl" class="block text-sm font-semibold leading-6 text-gray-900">Asal SMK</label>
             <div class="relative mt-3">
@@ -155,17 +225,21 @@
               <label for="asal-smk-peserta-pkl" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Asal SMK</label>
             </div>
           </div>
+
+          {{-- Unit peserta pkl --}}
           <div class="sm:col-span-2 mt-6">
             <label for="unit" class="block text-sm font-semibold leading-6 text-gray-900">Unit</label>
             <div class="relative mt-3">
               <input type="text" id="unit" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-              <label for="unit" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Unit</label>
+              <label for="unit" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Tempat Kalian Magang</label>
             </div>
           </div>
         </div>
 
         {{-- Fields baru untuk Pengguna Fasilitas --}}
         <div id="pengguna-fasilitas-fields" class="hidden">
+
+          {{-- Tanggal Penggunaan Fasilitas --}}
           <div class="sm:col-span-2 mt-6">
             <label for="tanggal-penggunaan" class="block text-sm font-semibold leading-6 text-gray-900">Tanggal Penggunaan</label>
             <div date-rangepicker class="flex items-center mt-2">
@@ -188,6 +262,8 @@
             </div>
             </div>
           </div>
+
+          {{-- Nama pengguna fasilitas --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Nama Pengguna Fasilitas</label>
             <div class="relative mt-3">
@@ -195,20 +271,26 @@
               <label for="nama-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Anda</label>
             </div>
           </div>
+
+          {{-- Nomor telepon pengguna fasilitas --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nomor-telepon-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon Pengguna</label>
-          <div class="relative mt-3">
-            <input type="text" id="nomor-telepon-pengguna-fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-            <label for="nomor-telepon-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            <div class="relative mt-3">
+              <input type="text" id="nomor-telepon-pengguna-fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="nomor-telepon-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            </div>
           </div>
-          </div>
+
+          {{-- Email pengguna fasilitas --}}
           <div class="sm:col-span-2 mt-6">
             <label for="email-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Email Pengguna</label>
-          <div class="relative mt-3">
-            <input type="email" id="email-pengguna-fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-            <label for="email-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">saya@gmail.com</label>
+            <div class="relative mt-3">
+              <input type="email" id="email-pengguna-fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="email-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">saya@gmail.com</label>
+            </div>
           </div>
-          </div>
+
+          {{-- Fasilitas yang digunakan --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Fasilitas yang digunakan</label>
             <div class="mt-2.5">
@@ -224,6 +306,8 @@
 
         {{-- Fields baru untuk Masyarakat Umum --}}
         <div id="masyarakat-umum-fields" class="hidden">
+
+          {{-- Nama masyarakat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Nama</label>
             <div class="relative mt-3">
@@ -231,20 +315,26 @@
               <label for="nama-masyarakat-umum" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama</label>
             </div>
           </div>
+
+          {{-- Nomor Telepon --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nomor-telepon" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon</label>
-          <div class="relative mt-3">
-            <input type="text" id="nomor-telepon" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-            <label for="nomor-telepon" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            <div class="relative mt-3">
+              <input type="text" id="nomor-telepon" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="nomor-telepon" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            </div>
           </div>
-          </div>
+
+          {{-- Email Masyarakat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="email-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
-          <div class="relative mt-3">
-            <input type="email" id="email-pengguna" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-            <label for="email-masyarakat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">saya@gmail.com</label>
+            <div class="relative mt-3">
+              <input type="email" id="email-pengguna" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="email-masyarakat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">saya@gmail.com</label>
+            </div>
           </div>
-          </div>
+
+          {{-- Alamat Masyarakat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="alamat-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Alamat</label>
             <div class="relative mt-3">
@@ -252,27 +342,84 @@
               <label for="alamat-masyarakat-umum" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Alamat</label>
             </div>
           </div>
-          
         </div>
 
         {{-- Fields baru untuk Permintaan Informasi --}}
         <div id="permintaan-informasi-fields" class="hidden">
-          <div class="sm:col-span-2 mt-6">
+
+          {{-- Nama Peminta Informasi --}}
+          <div class="sm:col-span-2">
             <label for="nama-peminta-informasi" class="block text-sm font-semibold leading-6 text-gray-900">Nama</label>
             <div class="relative mt-3">
-              <input type="text" id="nama-peminta-informasi" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input wire:model="nama_peminta_informasi" type="text" id="nama-peminta-informasi" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="nama-peminta-informasi" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama</label>
             </div>
           </div>
+
+          {{-- Nomor Telepon --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nomor-telepon-peminta-informasi" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon</label>
-          <div class="relative mt-3">
-            <input type="text" id="nomor-telepon-peminta-informasi" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-            <label for="nomor-telepon-peminta-informasi" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
-          </div>
+            <div class="relative mt-3">
+              <input wire:model="nomor_telepon_peminta_informasi" type="text" id="nomor-telepon-peminta-informasi" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="nomor-telepon-peminta-informasi" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            </div>
           </div>
         </div>
 
+        {{-- Fields baru untuk Permintaan Saran --}}
+        <div id="saran-fields" class="hidden">
+
+          <div class="sm:col-span-2" wire:ignore>
+            <label for="nama-peminta-saran" class="block text-sm font-semibold leading-6 text-gray-900">
+                Nama
+            </label>
+            <div class="relative mt-3">
+                <input type="text" id="nama-peminta-saran" 
+                    wire:model.defer="nama_aduan_informasi" 
+                    class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 
+                    appearance-none dark:text-white focus:outline-none focus:ring-0 peer 
+                    @if($errors->has('nama_aduan_informasi')) 
+                        border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 bg-transparent
+                    @elseif(strlen($nama_aduan_informasi) > 0) 
+                        border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 bg-white
+                    @else 
+                        border-gray-300 bg-transparent 
+                    @endif" 
+                    placeholder=" " />
+                <label for="nama-peminta-saran" 
+                    class="absolute text-sm 
+                    @if(strlen($nama_aduan_informasi) > 0) 
+                        text-green-600 dark:text-green-500 
+                    @else 
+                        text-gray-500 dark:text-gray-400 
+                    @endif duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] 
+                    bg-white dark:bg-gray-900 px-2 
+                    peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
+                    peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 
+                    peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 
+                    rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                    Masukkan Nama
+                </label>
+            </div>
+        
+            @if ($errors->has('nama_aduan_informasi'))
+                <p class="mt-2 text-xs text-red-600 dark:text-red-400">
+                    <span class="font-medium">Perhatian!</span> {{ $errors->first('nama_aduan_informasi') }}
+                </p>
+            @endif
+        </div>
+        
+          {{-- Nomor Telepon --}}
+          <div class="sm:col-span-2 mt-6">
+            <label for="nomor-telepon-peminta-saran" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon</label>
+            <div class="relative mt-3">
+              <input type="text" id="nomor-telepon-peminta-saran" wire:model="nomor_telepon_aduan_saran" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="nomor-telepon-peminta-saran" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
+            </div>
+          </div>
+        </div>        
+
+        {{-- Isi Pengaduan --}}
         <div class="sm:col-span-2 mt-6" id="isi-pengaduan-section">
           <label for="isi-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Isi Pengaduan</label>
           <div class="mt-2.5">
@@ -280,7 +427,23 @@
           </div>
         </div>
 
-        <div class="col-span-full mt-4 hidden" id="upload-foto-section">
+        <!-- Permintaan Informasi -->
+        <div class="sm:col-span-2 mt-6" id="isi-permintaan-informasi-section" wire:ignore>
+          <label for="isi-permintaan-informasi" class="block text-sm font-semibold leading-6 text-gray-900">Isi Permintaan Informasi</label>
+          <div class="mt-2.5">
+              <textarea wire:model="isi_laporan_permintaan_informasi" placeholder="Ketik Isi Permintaan Informasi Anda" id="isi-permintaan-informasi" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:text-sm sm:leading-6"></textarea>
+          </div>
+        </div>      
+
+        <!-- Saran -->
+        <div class="sm:col-span-2 mt-6" id="isi-saran-section" wire:ignore>
+          <label for="isi-saran" class="block text-sm font-semibold leading-6 text-gray-900">Isi Saran</label>
+          <div class="mt-2.5">
+              <textarea wire:model="isi_laporan_saran" placeholder="Ketik Isi Saran Anda" id="isi-saran" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:text-sm sm:leading-6"></textarea>
+          </div>
+        </div>
+
+        <div class="col-span-full mt-4" id="upload-foto-section" wire:ignore>
           <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto Sebagai Bukti Pendukung</label>
           @livewire('file-upload')
         </div>
@@ -304,7 +467,7 @@
 
       </div>
       <div class="mt-10">
-        <button wire:click="submit" type="submit" class="block w-full rounded-md bg-blue-bmti px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#60a5fa] transition ease-in-out duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ADUKAN!</button>
+        <button wire:click.prevent="submit" type="submit" class="block w-full rounded-md bg-blue-bmti px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#60a5fa] transition ease-in-out duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ADUKAN!</button>
       </div>
     </form>
   </div>
@@ -323,8 +486,13 @@
     const kategoriPengaduanSection = document.getElementById('kategori-pengaduan-section');
     const isiPengaduanSection = document.getElementById('isi-pengaduan-section');
     const permintaanInformasiFields = document.getElementById('permintaan-informasi-fields');
+    const saranFields = document.getElementById('saran-fields'); 
     const isiPengaduanLabel = document.querySelector('label[for="isi-pengaduan"]');
     const isiPengaduanTextarea = document.getElementById('isi-pengaduan');
+    
+    // New Textareas
+    const isiPermintaanInformasiSection = document.getElementById('isi-permintaan-informasi-section');
+    const isiSaranSection = document.getElementById('isi-saran-section');
 
     // Pengaduan Fields
     const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
@@ -341,30 +509,40 @@
     hideSection(isiPengaduanSection);
     hideSection(uploadFotoSection);
     hideSection(permintaanInformasiFields);
+    hideSection(saranFields); 
     hideSection(pesertaDiklatFields);
     hideSection(pesertaPklFields);
     hideSection(penggunaFasilitasFields);
     hideSection(masyarakatUmumFields);
     hideSection(anonimSection);
 
-    if (permintaanInformasi || saran) {
-      showSection(permintaanInformasiFields);
-      showSection(isiPengaduanSection);
-      isiPengaduanLabel.textContent = permintaanInformasi ? 'Isi Permintaan Informasi' : 'Isi Saran';
-      isiPengaduanTextarea.placeholder = permintaanInformasi ? 'Ketik Isi Permintaan Informasi Anda' : 'Ketik Isi Saran Anda';
+    // Hide custom textareas
+    hideSection(isiPermintaanInformasiSection);
+    hideSection(isiSaranSection);
+
+    if (permintaanInformasi) {
+        showSection(permintaanInformasiFields);
+        showSection(isiPermintaanInformasiSection);
+        hideSection(isiPengaduanSection);
+        hideSection(isiSaranSection);
+    } else if (saran) {
+        showSection(saranFields);
+        showSection(isiSaranSection);
+        hideSection(isiPengaduanSection);
+        hideSection(isiPermintaanInformasiSection);
     } else if (pengaduan) {
-      showSection(tanggalPengaduanSection);
-      showSection(jenisLayananSection);
-      showSection(tipeSection);
-      showSection(kategoriPengaduanSection);
-      showSection(isiPengaduanSection);
-      showSection(uploadFotoSection);
-      isiPengaduanLabel.textContent = 'Isi Pengaduan';
-      isiPengaduanTextarea.placeholder = 'Ketik Isi Pengaduan Anda';
+        showSection(tanggalPengaduanSection);
+        showSection(jenisLayananSection);
+        showSection(tipeSection);
+        showSection(kategoriPengaduanSection);
+        showSection(isiPengaduanSection);
+        showSection(uploadFotoSection);
+        hideSection(isiPermintaanInformasiSection);
+        hideSection(isiSaranSection);
     } else {
-      showSection(isiPengaduanSection);
-      isiPengaduanLabel.textContent = 'Isi Pengaduan';
-      isiPengaduanTextarea.placeholder = 'Ketik Isi Pengaduan Anda';
+        showSection(isiPengaduanSection);
+        hideSection(isiPermintaanInformasiSection);
+        hideSection(isiSaranSection);
     }
   }
 
@@ -400,38 +578,39 @@
   function toggleFieldsBasedOnTipe() {
     const tipe = document.getElementById('tipe').value;
 
-    hideSection(document.getElementById('peserta-diklat-fields'));
-    hideSection(document.getElementById('peserta-pkl-fields'));
-    hideSection(document.getElementById('pengguna-fasilitas-fields'));
-    hideSection(document.getElementById('masyarakat-umum-fields'));
-    hideSection(document.getElementById('anonim-section'));
+    // Sections to toggle
+    const pesertaDiklatFields = document.getElementById('peserta-diklat-fields');
+    const pesertaPklFields = document.getElementById('peserta-pkl-fields');
+    const penggunaFasilitasFields = document.getElementById('pengguna-fasilitas-fields');
+    const masyarakatUmumFields = document.getElementById('masyarakat-umum-fields');
+    const anonimSection = document.getElementById('anonim-section');
 
+    // Hide all sections initially
+    hideSection(pesertaDiklatFields);
+    hideSection(pesertaPklFields);
+    hideSection(penggunaFasilitasFields);
+    hideSection(masyarakatUmumFields);
+    hideSection(anonimSection);
+
+    // Show specific sections based on selected "tipe"
     if (tipe === 'daring' || tipe === 'luring' || tipe === 'hybrid') {
-      showSection(document.getElementById('peserta-diklat-fields'));
+      showSection(pesertaDiklatFields);
     } else if (tipe === 'pkl') {
-      showSection(document.getElementById('peserta-pkl-fields'));
+      showSection(pesertaPklFields);
     } else if (tipe === 'pengguna-fasilitas') {
-      showSection(document.getElementById('pengguna-fasilitas-fields'));
-    } else {
-      showSection(document.getElementById('masyarakat-umum-fields'));
-      showSection(document.getElementById('anonim-section'));
+      showSection(penggunaFasilitasFields);
+    } else if (tipe === 'kunjungan') {
+      showSection(masyarakatUmumFields);
+      showSection(anonimSection);
     }
   }
 
   function showSection(section) {
-    section.classList.remove('hidden');
+    if (section) section.classList.remove('hidden');
   }
 
   function hideSection(section) {
-    section.classList.add('hidden');
-  }
-
-  function showSections(sections) {
-    sections.forEach(section => showSection(section));
-  }
-
-  function hideSections(sections) {
-    sections.forEach(section => hideSection(section));
+    if (section) section.classList.add('hidden');
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -439,7 +618,11 @@
     document.getElementById('jenis-layanan').addEventListener('change', updateTipeOptions);
     document.getElementById('tipe').addEventListener('change', toggleFieldsBasedOnTipe);
   });
+
+  // Livewire hook to re-run the toggleElements function after the DOM is updated
+  document.addEventListener('livewire:load', function () {
+    Livewire.hook('message.processed', (message, component) => {
+      toggleElements(); 
+    });
+  });
 </script>
-
-
-

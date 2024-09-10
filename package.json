@@ -32,6 +32,7 @@
         "flatpickr": "^4.6.13",
         "flowbite-datepicker": "^1.2.6",
         "lottie-web": "^5.12.2",
-        "preline": "^2.3.0"
+        "preline": "^2.3.0",
+        "sweetalert2": "^11.12.4"
     }
 }

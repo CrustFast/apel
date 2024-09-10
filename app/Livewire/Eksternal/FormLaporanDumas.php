@@ -1,27 +1,20 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Eksternal;
 
 use Livewire\Component;
-use App\Models\ProgramKeahlian;
 use App\Models\LaporanDumas;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
-class Form extends Component
+class FormLaporanDumas extends Component
 {
-    public $selectedOption;
-    public $selectedIdentity;
-    public $programKeahlianOptions = [];
-
     public $klasifikasi_laporan;
     public $tanggal_pengaduan;
     public $jenis_layanan;
     public $tipe;
     public $kategori_pengaduan_id;
-    public $kategoriPengaduan = [];
-
     public $periode_diklat_mulai;
     public $periode_diklat_akhir;
     public $nama_diklat;
@@ -45,22 +38,16 @@ class Form extends Component
     public $alamat_masyarakat_umum;
     public $nama_peminta_informasi;
     public $nomor_telepon_peminta_informasi;
-    public $nama_aduan_informasi;
-    public $nomor_telepon_aduan_saran;
-    public $isi_laporan_pengaduan;
-    public $isi_laporan_permintaan_informasi;
-    public $isi_laporan_saran;
+    public $isi_laporan;
     public $bukti_foto_path = [];
     public $privasi;
 
     protected $rules = [
         'klasifikasi_laporan' => 'required|string',
-
-        // Pengaduan
-        'tanggal_pengaduan' => 'required|date|after_or_equal:today',
-        'jenis_layanan' => 'required_if:klasifikasi_laporan,pengaduan|string',
-        'tipe' => 'required_if:klasifikasi_laporan,pengaduan|string',
-        'kategori_pengaduan_id' => 'required_if:klasifikasi_laporan,pengaduan|exists:kategori,kategori_id|string',
+        'tanggal_pengaduan' => 'required|date',
+        'jenis_layanan' => 'required|string',
+        'tipe' => 'required|string',
+        'kategori_pengaduan_id' => 'required|string',
         'periode_diklat_mulai' => 'required_if:jenis_layanan,diklat|date',
         'periode_diklat_akhir' => 'required_if:jenis_layanan,diklat|date',
         'nama_diklat' => 'required_if:jenis_layanan,diklat|string|max:255',
@@ -82,19 +69,9 @@ class Form extends Component
         'nomor_telepon_masyarakat_umum' => 'required_if:tipe,kunjungan|string|max:20|regex:/^08[1-9][0-9]{6,11}$/',
         'email_masyarakat_umum' => 'required_if:tipe,kunjungan|email|max:255',
         'alamat_masyarakat_umum' => 'required_if:tipe,kunjungan|string|max:255',
-        'isi_laporan_pengaduan' => 'required_if:klasifikasi_laporan,pengaduan|string',
-
-        // Permintaan Informasi
         'nama_peminta_informasi' => 'required_if:klasifikasi_laporan,permintaan-informasi|string|max:255',
         'nomor_telepon_peminta_informasi' => 'required_if:klasifikasi_laporan,permintaan-informasi|string|max:20|regex:/^08[1-9][0-9]{6,11}$/',
-        'isi_laporan_permintaan_informasi' => 'required_if:klasifikasi_laporan,permintaan-informasi|string',
-
-        // Saran
-        'nama_aduan_informasi' => 'required_if:klasifikasi_laporan,saran|string|max:255',
-        'nomor_telepon_aduan_saran' => 'required_if:klasifikasi_laporan,saran|string|max:20|regex:/^08[1-9][0-9]{6,11}$/',
-        'isi_laporan_saran' => 'required_if:klasifikasi_laporan,saran|string',
-
-        // 'isi_laporan' => 'required|string',
+        'isi_laporan' => 'required|string',
         'bukti_foto_path.*' => 'nullable|file|max:10240', // Maksimal ukuran file 10MB
         'privasi' => 'required|in:anonim,rahasia',
     ];
@@ -134,7 +111,7 @@ class Form extends Component
         'nama_peminta_informasi.required_if' => 'Nama peminta informasi wajib diisi!',
         'nomor_telepon_peminta_informasi.required_if' => 'Nomor telepon peminta informasi wajib diisi!',
         'nomor_telepon_peminta_informasi.regex' => 'Nomor telepon harus dimulai dengan 08 dan memiliki 8-12 digit!',
-        'isi_laporan_pengaduan.required' => 'Isi laporan wajib diisi!',
+        'isi_laporan.required' => 'Isi laporan wajib diisi!',
         'bukti_foto_path.*.file' => 'Bukti pendukung harus berupa file!',
         'bukti_foto_path.*.max' => 'Ukuran file maksimal adalah 10MB!',
         'privasi.required' => 'Pilihan privasi wajib dipilih!',
@@ -147,78 +124,49 @@ class Form extends Component
 
     public function submit()
     {
-        Log::info('Memulai proses submit laporan Dumas.');
-    
+        Log::info('Memulai proses submit.');
+
         // Log nilai input sebelum validasi
         Log::info('Nilai input:', [
             'tanggal_pengaduan' => $this->tanggal_pengaduan,
-            'isi_laporan_pengaduan' => $this->isi_laporan_pengaduan,
+            'isi_laporan' => $this->isi_laporan,
             'klasifikasi_laporan' => $this->klasifikasi_laporan,
-            'jenis_layanan' => $this->jenis_layanan,
-            'tipe' => $this->tipe,
-            'kategori_pengaduan_id' => $this->kategori_pengaduan_id,
         ]);
 
-        Log::info('Kategori pengaduan ID:', ['kategori_pengaduan_id' => $this->kategori_pengaduan_id]);
-
-        $rules = [
-            'klasifikasi_laporan' => 'required|string',
-            'tanggal_pengaduan' => 'required|date|after_or_equal:today',
-            'jenis_layanan' => 'required|string',
-            'tipe' => 'required|string',
-            'kategori_pengaduan_id' => 'required|exists:kategori_pengaduan,id',
-        ];
-    
         try {
-            $validatedData = $this->validate($rules);
+            $validatedData = $this->validate();
             Log::info('Validasi berhasil.', $validatedData);
         } catch (\Illuminate\Validation\ValidationException $e) {
             Log::error('Validasi gagal.', $e->errors());
-            session()->flash('error', 'Validasi gagal. Silakan periksa kembali input Anda.');
+            session()->flash('error', 'Validasi gagal.');
             return;
         }
-    
-        // Modifikasi format tanggal sebelum penyimpanan
-        $validatedData['tanggal_pengaduan'] = Carbon::parse($this->tanggal_pengaduan)->format('Y-m-d');
-        Log::info('Data yang sudah dimodifikasi:', $validatedData);
-    
-        // Handle file uploads jika ada
+
+        // Handle file uploads
         $filePaths = [];
         if (!empty($this->bukti_foto_path)) {
             foreach ($this->bukti_foto_path as $file) {
-                $filePaths[] = $file->store('uploads', 'public'); // Simpan file dan path-nya
-                Log::info('File uploaded:', ['file' => $filePaths]);
+                $filePaths[] = $file->store('uploads', 'public'); // Save file and store the path
             }
         }
-    
-        // Tambahkan path file ke dalam data yang divalidasi
+
+        // Add file paths to the data to be saved
         $validatedData['bukti_foto_path'] = json_encode($filePaths);
-    
-        // Simpan data yang telah divalidasi
+
         try {
             LaporanDumas::create($validatedData);
+
             Log::info('Data berhasil disimpan.');
-    
-            // Kirim event untuk memicu modal
-            $this->dispatch('formSubmitted', ['pesan' => 'Terima kasih, laporan Anda telah kami terima. Silakan cek email untuk informasi lebih lanjut.']);
-            Log::info('Event formSubmitted berhasil dikirim.');
-    
             session()->flash('message', 'Laporan berhasil disimpan.');
         } catch (\Exception $e) {
             Log::error('Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
             session()->flash('error', 'Terjadi kesalahan saat menyimpan data.');
         }
     }
-    
-
-    public function mount()
-    {
-        $this->programKeahlianOptions = ProgramKeahlian::all();
-        $this->kategoriPengaduan = Kategori::pluck('nama_kategori', 'kategori_id')->toArray();
-    }
 
     public function render()
     {
+        dd('Komponen berhasil di-load');
         return view('livewire.form', [
             'kategoriOptions' => Kategori::all(),
         ]);

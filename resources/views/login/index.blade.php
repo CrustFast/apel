@@ -70,7 +70,7 @@
               <label for="remember_me" class="ml-2 block text-sm text-gray-900">Remember me</label>
             </div>
             <div class="text-sm">
-              <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Reset Password</a>
+              <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Forgot Password?</a>
             </div>
           </div>
           <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">

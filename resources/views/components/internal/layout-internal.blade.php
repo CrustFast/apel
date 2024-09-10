@@ -25,16 +25,13 @@
     href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
     rel="stylesheet"/>
 
-    <!-- Alpine JS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     {{-- Livewire --}}
     @livewireStyles
 
-    <title>Sistem Informasi dan Pelaporan Gratifikasi - SIAP</title>
+    <title>Aplikasi Kendali Laporan Gratifikasi - AKSI</title>
 
     <style>
         /* lottie */
@@ -66,10 +63,7 @@
         @include('components.eksternal.footer')
     </div>
 
-    {{-- Livewire --}}
-    @livewireScripts
-
-    <script src="{{ mix('js/app.js') }}"></script>
+    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
 
     {{-- AOS --}}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -115,6 +109,9 @@
             document.getElementById('loading-animation').style.display = 'none';
         });
     </script>
+    
+    {{-- Livewire --}}
+    @livewireScripts
 </body>
 
 </html>
