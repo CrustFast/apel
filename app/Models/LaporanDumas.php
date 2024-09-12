@@ -62,7 +62,7 @@ class LaporanDumas extends Model
     // Relasi ke Kategori Pengaduan
     public function kategoriPengaduan()
     {
-        return $this->belongsTo(Kategori::class, 'kategori_pengaduan_id', 'kategori_id');
+        return $this->belongsTo(KategoriPengaduan::class, 'kategori_pengaduan_id');
     }
 
     // Relasi ke Program Keahlian

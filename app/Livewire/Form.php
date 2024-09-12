@@ -20,8 +20,6 @@ class Form extends Component
     public $jenis_layanan;
     public $tipe;
     public $kategori_pengaduan_id;
-    public $kategoriPengaduan = [];
-
     public $periode_diklat_mulai;
     public $periode_diklat_akhir;
     public $nama_diklat;
@@ -60,7 +58,8 @@ class Form extends Component
         'tanggal_pengaduan' => 'required|date|after_or_equal:today',
         'jenis_layanan' => 'required_if:klasifikasi_laporan,pengaduan|string',
         'tipe' => 'required_if:klasifikasi_laporan,pengaduan|string',
-        'kategori_pengaduan_id' => 'required_if:klasifikasi_laporan,pengaduan|exists:kategori,kategori_id|string',
+        'kategori_pengaduan_id' => 'required|exists:kategori,kategori_id|not_in:""', 
+
         'periode_diklat_mulai' => 'required_if:jenis_layanan,diklat|date',
         'periode_diklat_akhir' => 'required_if:jenis_layanan,diklat|date',
         'nama_diklat' => 'required_if:jenis_layanan,diklat|string|max:255',
@@ -143,6 +142,11 @@ class Form extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+
+        // Log untuk memastikan kategori_pengaduan_id diupdate dengan benar
+        if ($propertyName === 'kategori_pengaduan_id') {
+            Log::info('Updated kategori_pengaduan_id:', ['kategori_pengaduan_id' => $this->kategori_pengaduan_id]);
+        }
     }
 
     public function submit()
@@ -162,11 +166,11 @@ class Form extends Component
         Log::info('Kategori pengaduan ID:', ['kategori_pengaduan_id' => $this->kategori_pengaduan_id]);
 
         $rules = [
-            'klasifikasi_laporan' => 'required|string',
+            'klasifikasi_laporan' => 'required',
             'tanggal_pengaduan' => 'required|date|after_or_equal:today',
             'jenis_layanan' => 'required|string',
             'tipe' => 'required|string',
-            'kategori_pengaduan_id' => 'required|exists:kategori_pengaduan,id',
+            'kategori_pengaduan_id' => 'required|exists:kategori,kategori_id|not_in:""',
         ];
     
         try {
@@ -176,7 +180,7 @@ class Form extends Component
             Log::error('Validasi gagal.', $e->errors());
             session()->flash('error', 'Validasi gagal. Silakan periksa kembali input Anda.');
             return;
-        }
+        }        
     
         // Modifikasi format tanggal sebelum penyimpanan
         $validatedData['tanggal_pengaduan'] = Carbon::parse($this->tanggal_pengaduan)->format('Y-m-d');
@@ -214,13 +218,12 @@ class Form extends Component
     public function mount()
     {
         $this->programKeahlianOptions = ProgramKeahlian::all();
-        $this->kategoriPengaduan = Kategori::pluck('nama_kategori', 'kategori_id')->toArray();
     }
 
     public function render()
     {
         return view('livewire.form', [
-            'kategoriOptions' => Kategori::all(),
+            'kategoriPengaduanOptions' => \App\Models\Kategori::all(), // Mengirim data kategori ke Blade
         ]);
     }
 }

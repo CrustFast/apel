@@ -33,7 +33,7 @@
         </div>
 
         {{-- tanggal pengaduan --}}
-        <div id="tanggal-pengaduan-section">
+        <div id="tanggal-pengaduan-section" wire:ignore>
           <label for="tanggal_pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">
             1. Tanggal Pengaduan<span class="text-red-600">*</span>
           </label>
@@ -72,9 +72,9 @@
         </div>
         
         {{-- jenis layanan --}}
-        <div id="jenis-layanan-section">
+        <div id="jenis-layanan-section" wire:ignore>
           <label for="jenis-layanan" class="block text-sm font-semibold leading-6 text-gray-900">
-              Jenis Layanan <span class="text-red-600">*</span>
+              2. Jenis Layanan <span class="text-red-600">*</span>
           </label>
           <div class="relative mt-3">
               <select id="jenis-layanan" name="jenis-layanan" wire:model="jenis_layanan"
@@ -102,8 +102,26 @@
         </div>
 
         {{-- kategori --}}
-        @livewire('kategori-pengaduan') 
-        
+        <div id="kategori-pengaduan-section">
+          <label for="kategori-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">
+              Kategori Pengaduan <span class="text-red-600">*</span>
+          </label>
+          <div class="relative mt-3">
+              <select id="kategori-pengaduan" name="kategori-pengaduan" wire:model="kategori_pengaduan_id"
+                  class="block w-full rounded-lg border border-gray-300 py-2.5 px-2.5 text-gray-900 bg-transparent shadow-sm ring-0 focus:outline-none focus:ring-0 focus:border-blue-600 sm:text-sm sm:leading-6">
+                  <option value="">Pilih Kategori</option>
+                  @foreach ($kategoriPengaduanOptions as $kategori)
+                      <option value="{{ $kategori->kategori_id }}">{{ $kategori->nama_kategori }}</option>
+                  @endforeach
+              </select>
+          </div>
+          @if ($errors->has('kategori_pengaduan_id'))
+              <p class="mt-2 text-xs text-red-600 dark:text-red-400">
+                  <span class="font-medium">Perhatian!</span> {{ $errors->first('kategori_pengaduan_id') }}
+              </p>
+          @endif
+      </div>      
+      
         {{-- Fields baru untuk Peserta Diklat --}}
         <div id="peserta-diklat-fields" class="hidden">
 
@@ -345,7 +363,7 @@
         </div>
 
         {{-- Fields baru untuk Permintaan Informasi --}}
-        <div id="permintaan-informasi-fields" class="hidden">
+        <div id="permintaan-informasi-fields" wire:ignore>
 
           {{-- Nama Peminta Informasi --}}
           <div class="sm:col-span-2">
@@ -367,9 +385,9 @@
         </div>
 
         {{-- Fields baru untuk Permintaan Saran --}}
-        <div id="saran-fields" class="hidden">
+        <div id="saran-fields"  wire:ignore>
 
-          <div class="sm:col-span-2" wire:ignore>
+          <div class="sm:col-span-2">
             <label for="nama-peminta-saran" class="block text-sm font-semibold leading-6 text-gray-900">
                 Nama
             </label>
@@ -420,7 +438,7 @@
         </div>        
 
         {{-- Isi Pengaduan --}}
-        <div class="sm:col-span-2 mt-6" id="isi-pengaduan-section">
+        <div class="sm:col-span-2 mt-6" id="isi-pengaduan-section" wire:ignore>
           <label for="isi-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Isi Pengaduan</label>
           <div class="mt-2.5">
             <textarea placeholder="Ketik Isi Laporan Anda" id="isi-pengaduan" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:text-sm sm:leading-6"></textarea>
