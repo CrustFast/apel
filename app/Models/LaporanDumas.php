@@ -47,12 +47,17 @@ class LaporanDumas extends Model
         'isi_laporan_saran',
         'bukti_foto_path',
         'privasi',
+        'periode_magang_mulai',
+        'periode_magang_akhir',
+        'nomor_telepon_peserta_pkl',
     ];
 
     // Cast attributes to specific types
     protected $casts = [
         'periode_diklat_mulai' => 'date',
         'periode_diklat_akhir' => 'date',
+        'periode_magang_mulai' => 'date',
+        'periode_magang_akhir' => 'date',
         'tanggal_magang' => 'date',
         'tanggal_penggunaan_mulai' => 'date',
         'tanggal_penggunaan_akhir' => 'date',
@@ -60,10 +65,10 @@ class LaporanDumas extends Model
     ];
 
     // Relasi ke Kategori Pengaduan
-    public function kategoriPengaduan()
-    {
-        return $this->belongsTo(KategoriPengaduan::class, 'kategori_pengaduan_id');
-    }
+    // public function kategoriPengaduan()
+    // {
+    //     return $this->belongsTo(KategoriPengaduan::class, 'kategori_pengaduan_id');
+    // }
 
     // Relasi ke Program Keahlian
     public function programKeahlian()

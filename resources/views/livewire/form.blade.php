@@ -74,7 +74,7 @@
         {{-- jenis layanan --}}
         <div id="jenis-layanan-section" wire:ignore>
           <label for="jenis-layanan" class="block text-sm font-semibold leading-6 text-gray-900">
-              2. Jenis Layanan <span class="text-red-600">*</span>
+              2. Jenis Layanan<span class="text-red-600">*</span>
           </label>
           <div class="relative mt-3">
               <select id="jenis-layanan" name="jenis-layanan" wire:model="jenis_layanan"
@@ -102,9 +102,9 @@
         </div>
 
         {{-- kategori --}}
-        <div id="kategori-pengaduan-section">
+        <div id="kategori-pengaduan-section" wire:ignore>
           <label for="kategori-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">
-              Kategori Pengaduan <span class="text-red-600">*</span>
+              4. Kategori Pengaduan <span class="text-red-600">*</span>
           </label>
           <div class="relative mt-3">
               <select id="kategori-pengaduan" name="kategori-pengaduan" wire:model="kategori_pengaduan_id"
@@ -123,46 +123,89 @@
       </div>      
       
         {{-- Fields baru untuk Peserta Diklat --}}
-        <div id="peserta-diklat-fields" class="hidden">
+        <div id="peserta-diklat-fields" wire:ignore>
 
           {{-- Periode diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="periode-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Periode Diklat</label>
             <div date-rangepicker class="flex items-center mt-2">
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
-                    </svg>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
+                        </svg>
+                    </div>
+                    <input
+                      datepicker
+                      datepicker-autohide
+                      datepicker-buttons
+                      datepicker-autoselect-today
+                      type="text"
+                      wire:model.lazy="periode_diklat_mulai"
+                      @change-date.camel="@this.set('periode_diklat_mulai', $event.target.value)"
+                      id="periode_diklat_mulai"
+                      class="text-gray-900 text-sm rounded-lg border-1
+                        @if($errors->has('periode_diklat_mulai')) 
+                          border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 
+                        @elseif(strlen($periode_diklat_mulai) > 0) 
+                          border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 
+                        @else 
+                          border-gray-300 
+                        @endif
+                        focus:ring-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Mulai"
+                    >
                 </div>
-                <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mulai">
+                <span class="mx-4 text-gray-500">to</span>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input
+                      datepicker
+                      datepicker-autohide
+                      datepicker-buttons
+                      datepicker-autoselect-today
+                      type="text"
+                      wire:model.lazy="periode_diklat_akhir"
+                      @change-date.camel="@this.set('periode_diklat_akhir', $event.target.value)"
+                      id="periode_diklat_akhir"
+                      class="text-gray-900 text-sm rounded-lg border-1
+                        @if($errors->has('periode_diklat_akhir')) 
+                          border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 
+                        @elseif(strlen($periode_diklat_akhir) > 0) 
+                          border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 
+                        @else 
+                          border-gray-300 
+                        @endif
+                        focus:ring-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Akhir"
+                    >
+                  </div>
               </div>
-              <span class="mx-4 text-gray-500">to</span>
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
-                    </svg>
-                </div>
-                <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Akhir">
-            </div>
-            </div>
           </div>
+          @if ($errors->has('periode_diklat_mulai') || $errors->has('periode_diklat_akhir'))
+              <p class="mt-2 text-xs text-red-600 dark:text-red-400">
+                  <span class="font-medium">Perhatian!</span> {{ $errors->first('periode_diklat_mulai') }} {{ $errors->first('periode_diklat_akhir') }}
+              </p>
+          @endif        
 
           {{-- Nama diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Nama Diklat</label>
             <div class="relative mt-3">
-              <input type="text" id="nama-diklat" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-              <label for="nama-diklat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Diklat</label>
+                <input type="text" id="nama-diklat" wire:model="nama_diklat" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                <label for="nama-diklat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Diklat</label>
             </div>
-          </div>
+          </div>        
 
           {{-- Nama peserta diklat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-peserta-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Nama Peserta</label>
             <div class="relative mt-3">
-              <input type="text" id="nama-peserta-diklat" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="nama-peserta-diklat" wire:model="nama_peserta_diklat" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="nama-peserta-diklat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Peserta</label>
             </div>
           </div>
@@ -171,7 +214,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="nomor-telepon-peserta-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon Peserta Diklat</label>
             <div class="relative mt-3">
-              <input type="text" id="nomor-telepon" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="nomor-telepon" wire:model="nomor_telepon_peserta_diklat" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="nomor-telepon" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
             </div>
           </div>
@@ -180,7 +223,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="asal-smk-peserta-diklat" class="block text-sm font-semibold leading-6 text-gray-900">Asal SMK</label>
             <div class="relative mt-3">
-              <input type="text" id="asal-smk-peserta-diklat" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="asal-smk-peserta-diklat" wire:model="asal_smk_peserta_diklat" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="asal-smk-peserta-diklat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Asal SMK</label>
             </div>
           </div>
@@ -189,49 +232,101 @@
           <div class="sm:col-span-2 mt-6">
             <label for="program-keahlian" class="block text-sm font-semibold leading-6 text-gray-900">Program Keahlian</label>
             <div class="mt-2.5">
-                <select id="program-keahlian" name="program-keahlian" autocomplete="program-keahlian-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
-                    <option value="" disabled selected>Pilih Program Keahlian</option>
+                <select id="program-keahlian" wire:model="program_keahlian" name="program-keahlian" autocomplete="program-keahlian-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+                    <option value="" selected>Pilih Program Keahlian</option>
                     @foreach ($programKeahlianOptions as $option)
                         <option value="{{ $option->id }}">{{ $option->nama_program_keahlian }}</option>
                     @endforeach
                 </select>
-            </div>
-          </div>        
-        </div>
+              </div>
+            </div>        
+          </div>
 
         {{-- Fields baru untuk Peserta PKL --}}
-        <div id="peserta-pkl-fields" class="hidden">
+        <div id="peserta-pkl-fields" wire:ignore>
 
           {{-- Periode Magang --}}
           <div class="sm:col-span-2 mt-6">
-            <label for="Tanggal-magang" class="block text-sm font-semibold leading-6 text-gray-900">Pilih Tanggal Magang</label>
+            <label for="periode-magang" class="block text-sm font-semibold leading-6 text-gray-900">Periode Magang</label>
             <div date-rangepicker class="flex items-center mt-2">
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
-                    </svg>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
+                        </svg>
+                    </div>
+                    <input
+                      datepicker
+                      datepicker-autohide
+                      datepicker-buttons
+                      datepicker-autoselect-today
+                      type="text"
+                      wire:model.lazy="periode_magang_mulai"
+                      @change-date.camel="@this.set('periode_magang_mulai', $event.target.value)"
+                      id="periode_magang_mulai"
+                      class="text-gray-900 text-sm rounded-lg border-1
+                        @if($errors->has('periode_magang_mulai')) 
+                          border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 
+                        @elseif(strlen($periode_magang_mulai) > 0) 
+                          border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 
+                        @else 
+                          border-gray-300 
+                        @endif
+                        focus:ring-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Mulai"
+                    >
                 </div>
-                <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mulai">
+                <span class="mx-4 text-gray-500">to</span>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input
+                      datepicker
+                      datepicker-autohide
+                      datepicker-buttons
+                      datepicker-autoselect-today
+                      type="text"
+                      wire:model.lazy="periode_magang_akhir"
+                      @change-date.camel="@this.set('periode_magang_akhir', $event.target.value)"
+                      id="periode_magang_akhir"
+                      class="text-gray-900 text-sm rounded-lg border-1
+                        @if($errors->has('periode_magang_akhir')) 
+                          border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 
+                        @elseif(strlen($periode_magang_akhir) > 0) 
+                          border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 
+                        @else 
+                          border-gray-300 
+                        @endif
+                        focus:ring-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Akhir"
+                    >
+                  </div>
               </div>
-              <span class="mx-4 text-gray-500">to</span>
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
-                    </svg>
-                </div>
-                <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Akhir">
-            </div>
-            </div>
           </div>
+          @if ($errors->has('periode_magang_mulai') || $errors->has('periode_magang_akhir'))
+              <p class="mt-2 text-xs text-red-600 dark:text-red-400">
+                  <span class="font-medium">Perhatian!</span> {{ $errors->first('periode_magang_mulai') }} {{ $errors->first('periode_magang_akhir') }}
+              </p>
+          @endif  
 
           {{-- Nama Peserta PKL --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-peserta-pkl" class="block text-sm font-semibold leading-6 text-gray-900">Nama Peserta PKL</label>
             <div class="relative mt-3">
-              <input type="text" id="nama-peserta-pkl" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="nama-peserta-pkl" wire:model="nama_peserta_pkl" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="nama-peserta-pkl" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Peserta PKL</label>
+            </div>
+          </div>
+
+          {{-- Nomor Telepon Peserta PKL --}}
+          <div class="sm:col-span-2 mt-6">
+            <label for="nomor-telepon-peserta-pkl" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon Peserta PKL</label>
+            <div class="relative mt-3">
+              <input type="text" id="nomor-telepon" wire:model="nomor_telepon_peserta_pkl" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <label for="nomor-telepon" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
             </div>
           </div>
 
@@ -239,7 +334,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="asal-smk-peserta-pkl" class="block text-sm font-semibold leading-6 text-gray-900">Asal SMK</label>
             <div class="relative mt-3">
-              <input type="text" id="asal-smk-peserta-pkl" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="asal-smk-peserta-pkl" wire:model="asal_smk_peserta_pkl" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="asal-smk-peserta-pkl" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Asal SMK</label>
             </div>
           </div>
@@ -248,44 +343,87 @@
           <div class="sm:col-span-2 mt-6">
             <label for="unit" class="block text-sm font-semibold leading-6 text-gray-900">Unit</label>
             <div class="relative mt-3">
-              <input type="text" id="unit" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="unit" wire:model="unit" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="unit" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Tempat Kalian Magang</label>
             </div>
           </div>
         </div>
 
         {{-- Fields baru untuk Pengguna Fasilitas --}}
-        <div id="pengguna-fasilitas-fields" class="hidden">
+        <div id="pengguna-fasilitas-fields" wire:ignore>
 
           {{-- Tanggal Penggunaan Fasilitas --}}
           <div class="sm:col-span-2 mt-6">
-            <label for="tanggal-penggunaan" class="block text-sm font-semibold leading-6 text-gray-900">Tanggal Penggunaan</label>
+            <label for="tanggal-penggunaan-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Tanggal Penggunaan</label>
             <div date-rangepicker class="flex items-center mt-2">
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
-                    </svg>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z" />
+                        </svg>
+                    </div>
+                    <input
+                      datepicker
+                      datepicker-autohide
+                      datepicker-buttons
+                      datepicker-autoselect-today
+                      type="text"
+                      wire:model.lazy="tanggal_penggunaan_mulai"
+                      @change-date.camel="@this.set('tanggal_penggunaan_mulai', $event.target.value)"
+                      id="tanggal_penggunaan_mulai"
+                      class="text-gray-900 text-sm rounded-lg border-1
+                        @if($errors->has('tanggal_penggunaan_mulai')) 
+                          border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 
+                        @elseif(strlen($tanggal_penggunaan_mulai) > 0) 
+                          border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 
+                        @else 
+                          border-gray-300 
+                        @endif
+                        focus:ring-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Mulai"
+                    >
                 </div>
-                <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mulai">
+                <span class="mx-4 text-gray-500">to</span>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input
+                      datepicker
+                      datepicker-autohide
+                      datepicker-buttons
+                      datepicker-autoselect-today
+                      type="text"
+                      wire:model.lazy="tanggal_penggunaan_akhir"
+                      @change-date.camel="@this.set('tanggal_penggunaan_akhir', $event.target.value)"
+                      id="tanggal_penggunaan_akhir"
+                      class="text-gray-900 text-sm rounded-lg border-1
+                        @if($errors->has('tanggal_penggunaan_akhir')) 
+                          border-red-600 dark:border-red-500 dark:focus:border-red-500 focus:border-red-600 
+                        @elseif(strlen($tanggal_penggunaan_akhir) > 0) 
+                          border-green-600 dark:border-green-500 dark:focus:border-green-500 focus:border-green-600 
+                        @else 
+                          border-gray-300 
+                        @endif
+                        focus:ring-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Akhir"
+                    >
+                  </div>
               </div>
-              <span class="mx-4 text-gray-500">to</span>
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 1 0 0-2Z"/>
-                    </svg>
-                </div>
-                <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Akhir">
-            </div>
-            </div>
           </div>
+          @if ($errors->has('tanggal_penggunaan_mulai') || $errors->has('tanggal_penggunaan_akhir'))
+              <p class="mt-2 text-xs text-red-600 dark:text-red-400">
+                  <span class="font-medium">Perhatian!</span> {{ $errors->first('tanggal_penggunaan_mulai') }} {{ $errors->first('tanggal_penggunaan_akhir') }}
+              </p>
+          @endif  
 
           {{-- Nama pengguna fasilitas --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Nama Pengguna Fasilitas</label>
             <div class="relative mt-3">
-              <input type="text" id="nama-pengguna-fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="nama-pengguna-fasilitas" wire:model="nama_pengguna_fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="nama-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama Anda</label>
             </div>
           </div>
@@ -294,7 +432,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="nomor-telepon-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon Pengguna</label>
             <div class="relative mt-3">
-              <input type="text" id="nomor-telepon-pengguna-fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="nomor-telepon-pengguna-fasilitas" wire:model="nomor_telepon_pengguna_fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="nomor-telepon-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
             </div>
           </div>
@@ -303,7 +441,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="email-pengguna-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Email Pengguna</label>
             <div class="relative mt-3">
-              <input type="email" id="email-pengguna-fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="email" id="email-pengguna-fasilitas" wire:model="email_pengguna_fasilitas" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="email-pengguna-fasilitas" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">saya@gmail.com</label>
             </div>
           </div>
@@ -312,33 +450,39 @@
           <div class="sm:col-span-2 mt-6">
             <label for="nama-fasilitas" class="block text-sm font-semibold leading-6 text-gray-900">Fasilitas yang digunakan</label>
             <div class="mt-2.5">
-              <select id="nama-fasilitas" name="nama-fasilitas" autocomplete="nama-fasilitas" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
-                <option value="" disabled selected>Pilih Fasilitas</option>
-                <option value="kolam">Kolam</option>
-                <option value="bale-pancaniti">Bale Pancaniti</option>
-                <option value="bale-binangkit">Bale Binangkit</option>
-              </select>
+                <select id="nama-fasilitas" wire:model="nama_fasilitas" name="nama-fasilitas" autocomplete="nama-fasilitas" class="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:max-w-xs sm:text-sm sm:leading-6">
+                    <option value="" selected>Pilih Fasilitas</option>
+                    <option value="kolam">Kolam</option>
+                    <option value="bale-pancaniti">Bale Pancaniti</option>
+                    <option value="bale-binangkit">Bale Binangkit</option>
+                </select>
             </div>
-          </div>
+          </div>        
         </div>
 
         {{-- Fields baru untuk Masyarakat Umum --}}
-        <div id="masyarakat-umum-fields" class="hidden">
+        <div id="masyarakat-umum-fields" wire:ignore>
 
           {{-- Nama masyarakat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nama-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Nama</label>
             <div class="relative mt-3">
-              <input type="text" id="nama-masyarakat-umum" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-              <label for="nama-masyarakat-umum" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Nama</label>
+              <input type="text" id="nama-masyarakat-umum" wire:model="nama_masyarakat_umum"
+                    value="{{ $privasi === 'anonim' ? 'Anonim' : '' }}"
+                    class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " {{ $privasi === 'anonim' ? 'readonly' : '' }} />
+              <label for="nama-masyarakat-umum" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                {{ $privasi === 'anonim' ? 'Anonim' : 'Masukkan Nama' }}
+              </label>
             </div>
           </div>
+          
 
           {{-- Nomor Telepon --}}
           <div class="sm:col-span-2 mt-6">
             <label for="nomor-telepon" class="block text-sm font-semibold leading-6 text-gray-900">Nomor Telepon</label>
             <div class="relative mt-3">
-              <input type="text" id="nomor-telepon" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="text" id="nomor-telepon" wire:model="nomor_telepon_masyarakat_umum" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="nomor-telepon" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">0812345678</label>
             </div>
           </div>
@@ -347,7 +491,7 @@
           <div class="sm:col-span-2 mt-6">
             <label for="email-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
             <div class="relative mt-3">
-              <input type="email" id="email-pengguna" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+              <input type="email" id="email-pengguna" wire:model="email_masyarakat_umum" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
               <label for="email-masyarakat" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">saya@gmail.com</label>
             </div>
           </div>
@@ -355,10 +499,9 @@
           {{-- Alamat Masyarakat --}}
           <div class="sm:col-span-2 mt-6">
             <label for="alamat-masyarakat-umum" class="block text-sm font-semibold leading-6 text-gray-900">Alamat</label>
-            <div class="relative mt-3">
-              <input type="text" id="alamat-masyarakat-umum" class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-              <label for="alamat-masyarakat-umum" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Masukkan Alamat</label>
-            </div>
+            <div class="mt-2.5">
+              <textarea wire:model="alamat_masyarakat_umum" placeholder="Ketik Isi Alamat Anda" id="alamat-masyarakat-umum" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:text-sm sm:leading-6"></textarea>
+          </div>
           </div>
         </div>
 
@@ -439,9 +582,9 @@
 
         {{-- Isi Pengaduan --}}
         <div class="sm:col-span-2 mt-6" id="isi-pengaduan-section" wire:ignore>
-          <label for="isi-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">Isi Pengaduan</label>
+          <label for="isi-pengaduan" class="block text-sm font-semibold leading-6 text-gray-900">5. Isi Pengaduan<span class="text-red-600">*</span></label>
           <div class="mt-2.5">
-            <textarea placeholder="Ketik Isi Laporan Anda" id="isi-pengaduan" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:text-sm sm:leading-6"></textarea>
+            <textarea placeholder="Ketik Isi Laporan Anda" id="isi-pengaduan" wire:model="isi_laporan_pengaduan" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-bmti sm:text-sm sm:leading-6"></textarea>
           </div>
         </div>
 
@@ -466,21 +609,21 @@
           @livewire('file-upload')
         </div>
 
-        <div id="anonim-section" class="sm:col-span-2 mt-6 flex gap-4 items-center hidden"> 
+        <div id="anonim-section" class="sm:col-span-2 mt-6 flex gap-4 items-center hidden" wire:ignore> 
           <div class="flex items-center relative group">
-            <input id="anonim" name="anonim" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+            <input id="anonim" name="anonim" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" wire:model.defer="privasi" value="anonim">
             <label for="anonim" class="ml-2 block text-sm font-medium leading-6 text-gray-900">Anonim</label>
             <div class="absolute w-48 p-2 text-xs text-white bg-gray-900 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
               Nama Anda tidak akan terpublikasi pada laporan
             </div>
           </div>
           <div class="flex items-center relative group">
-            <input id="rahasia" name="anonim" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti">
+            <input id="rahasia" name="anonim" type="radio" class="h-4 w-4 border-gray-300 text-blue-bmti focus:ring-blue-bmti" wire:model.defer="privasi" value="rahasia">
             <label for="rahasia" class="ml-2 block text-sm font-medium leading-6 text-gray-900">Rahasia</label>
             <div class="absolute w-48 p-2 text-xs text-white bg-gray-900 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-full left-1/2 transform -translate-x-1/2 mb-1">
               Nama Anda hanya akan diketahui oleh petugas terkait
             </div>
-          </div>
+          </div>          
         </div>
 
       </div>

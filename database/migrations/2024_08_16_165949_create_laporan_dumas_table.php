@@ -39,8 +39,10 @@ return new class extends Migration
             $table->string('program_keahlian')->nullable();
 
             // Peserta PKL Fields
-            $table->date('tanggal_magang')->nullable();
+            $table->date('periode_magang_mulai')->nullable();
+            $table->date('periode_magang_akhir')->nullable();
             $table->string('nama_peserta_pkl')->nullable();
+            $table->string('nomor_telepon_peserta_pkl')->nullable();
             $table->string('asal_smk_peserta_pkl')->nullable();
             $table->string('unit')->nullable();
 
