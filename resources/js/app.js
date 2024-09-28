@@ -10,9 +10,13 @@ import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import Swal from 'sweetalert2';
+import DataTable from 'datatables.net-dt';
+// import { Livewire } from '../../vendor/livewire/livewire/dist/livewire.esm'
+// import 'datatables.net-responsive-dt';
+
+// Livewire.start()
 
 window.Swal = Swal;
-// window.preline = preline;
 
 // Register the plugins
 FilePond.registerPlugin(
@@ -24,4 +28,8 @@ FilePond.registerPlugin(
 
 // Turn all file input elements into ponds
 FilePond.parse(document.body);
+
+let table = new DataTable('#myTable', {
+  responsive: true
+});
 

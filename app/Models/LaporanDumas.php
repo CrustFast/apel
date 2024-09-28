@@ -54,6 +54,7 @@ class LaporanDumas extends Model
 
     // Cast attributes to specific types
     protected $casts = [
+        'tanggal_pengaduan' => 'date',
         'periode_diklat_mulai' => 'date',
         'periode_diklat_akhir' => 'date',
         'periode_magang_mulai' => 'date',
@@ -65,10 +66,10 @@ class LaporanDumas extends Model
     ];
 
     // Relasi ke Kategori Pengaduan
-    // public function kategoriPengaduan()
-    // {
-    //     return $this->belongsTo(KategoriPengaduan::class, 'kategori_pengaduan_id');
-    // }
+    public function kategoriPengaduan()
+    {
+        return $this->belongsTo(Kategori::class, 'kategori_pengaduan_id', 'kategori_id'); // Sesuaikan dengan nama kolom primary key
+    }
 
     // Relasi ke Program Keahlian
     public function programKeahlian()
