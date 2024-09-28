@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Livewire\Eksternal\FormGratifikasi;
+use App\Http\Controllers\LaporanGratifikasiController;
 
 // login Page
 Route::get('/login', [LoginController::class, 'index']);
@@ -33,6 +34,12 @@ Route::get('/benturan_kepentingan', function () {
 Route::get('/external', function () {
     return view('pages.eksternal');
 })->name('eksternal.view');
+
+Route::view('/success-page', 'components.success-page');
+Route::view('/failed-page', 'components.failed-page');
+
+// Route::view('/edit-page/{id}', 'livewire.dashboard.edit-page')->name('edit-page');
+Route::get('/edit-page/{id}', [LaporanGratifikasiController::class, 'edit'])->name('edit-page');
 
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
 
