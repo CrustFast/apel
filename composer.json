@@ -13,7 +13,9 @@
         "filament/forms": "^3.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.5"
+        "livewire/livewire": "^3.5",
+        "pusher/pusher-php-server": "^7.2",
+        "twilio/sdk": "^8.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
