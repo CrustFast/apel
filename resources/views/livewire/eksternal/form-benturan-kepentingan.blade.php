@@ -473,7 +473,15 @@
       @endif
 
       <div class="mt-10">
-        <button wire:click.prevent="submit" type="submit" class="block w-full rounded-md bg-blue-bmti px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#60a5fa] transition ease-in-out duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ADUKAN!</button>
+        <button wire:click.prevent="submit" type="submit" class="block w-full rounded-md bg-blue-bmti px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#60a5fa] transition ease-in-out duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" 
+          wire:loading.attr="disabled">
+            <span wire:loading.remove>ADUKAN!</span>
+            <span wire:loading>
+                <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-white rounded-full dark:text-blue-500" role="status" aria-label="loading">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </span>
+        </button>
       </div>
     </form>
   </div>

@@ -8,6 +8,7 @@ use App\Models\LaporanDumas;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
+use Twilio\Rest\Client;
 
 class Form extends Component
 {
@@ -64,7 +65,7 @@ class Form extends Component
         'klasifikasi_laporan' => 'required|string',
 
         // Pengaduan
-        'tanggal_pengaduan' => 'required|date|after_or_equal:today',
+        'tanggal_pengaduan' => 'required|date|before_or_equal:today',
         'jenis_layanan' => 'required_if:klasifikasi_laporan,pengaduan|string',
         'tipe' => 'required_if:klasifikasi_laporan,pengaduan|string',
         'kategori_pengaduan_id' => 'required|exists:kategori,kategori_id|not_in:""', 
@@ -120,6 +121,7 @@ class Form extends Component
     protected $messages = [
         'klasifikasi_laporan.required' => 'Klasifikasi laporan wajib dipilih!',
         'tanggal_pengaduan.required' => 'Tanggal pengaduan wajib diisi!',
+        'tanggal_pengaduan.after_or_equal' => 'Tanggal pengaduan harus hari ini atau sebelumnya.',
         'jenis_layanan.required' => 'Jenis layanan wajib dipilih!',
         'tipe.required' => 'Tipe layanan wajib dipilih!',
         'kategori_pengaduan_id.required' => 'Kategori pengaduan wajib dipilih!',
@@ -162,6 +164,11 @@ class Form extends Component
     {
         $this->validateOnly($propertyName);
 
+        // Remove error message if validation passes
+        if ($this->getErrorBag()->isEmpty()) {
+            $this->resetErrorBag($propertyName);
+        }
+
         // Log untuk memastikan kategori_pengaduan_id diupdate dengan benar
         if ($propertyName === 'kategori_pengaduan_id') {
             Log::info('Updated kategori_pengaduan_id:', ['kategori_pengaduan_id' => $this->kategori_pengaduan_id]);
@@ -199,6 +206,26 @@ class Form extends Component
     public function submit()
     {
         Log::info('Memulai proses submit laporan Dumas.');
+
+        // Pastikan format nomor telepon peserta diklat
+        if ($this->nomor_telepon_peserta_diklat && strpos($this->nomor_telepon_peserta_diklat, '+') !== 0) {
+            $this->nomor_telepon_peserta_diklat = preg_replace('/^0/', '+62', $this->nomor_telepon_peserta_diklat);
+        }
+
+        // Pastikan format nomor telepon peserta PKL
+        if ($this->nomor_telepon_peserta_pkl && strpos($this->nomor_telepon_peserta_pkl, '+') !== 0) {
+            $this->nomor_telepon_peserta_pkl = preg_replace('/^0/', '+62', $this->nomor_telepon_peserta_pkl);
+        }
+
+        // Pastikan format nomor telepon pengguna fasilitas
+        if ($this->nomor_telepon_pengguna_fasilitas && strpos($this->nomor_telepon_pengguna_fasilitas, '+') !== 0) {
+            $this->nomor_telepon_pengguna_fasilitas = preg_replace('/^0/', '+62', $this->nomor_telepon_pengguna_fasilitas);
+        }
+
+        // Pastikan format nomor telepon masyarakat umum
+        if ($this->nomor_telepon_masyarakat_umum && strpos($this->nomor_telepon_masyarakat_umum, '+') !== 0) {
+            $this->nomor_telepon_masyarakat_umum = preg_replace('/^0/', '+62', $this->nomor_telepon_masyarakat_umum);
+        }
         
         // Log semua data yang diterima sebelum validasi
         Log::info('Data input sebelum validasi:', [
@@ -249,7 +276,7 @@ class Form extends Component
         if ($this->klasifikasi_laporan === 'pengaduan') {
             $rules = [
                 'klasifikasi_laporan' => 'required',
-                'tanggal_pengaduan' => 'required|date|after_or_equal:today',
+                'tanggal_pengaduan' => 'required|date|before_or_equal:today',
                 'jenis_layanan' => 'required|string',
                 'tipe' => 'required|string',
                 'kategori_pengaduan_id' => 'required|exists:kategori,kategori_id|not_in:""',
@@ -262,7 +289,7 @@ class Form extends Component
                 $rules['periode_diklat_akhir'] = 'required|date|after_or_equal:periode_diklat_mulai';
                 $rules['nama_diklat'] = 'required|string';
                 $rules['nama_peserta_diklat'] = 'required|string';
-                $rules['nomor_telepon_peserta_diklat'] = 'required|string';
+                $rules['nomor_telepon_peserta_diklat'] = 'required_if:jenis_layanan,diklat|max:20|regex:/^08[0-9]{8,11}$/';
                 $rules['asal_smk_peserta_diklat'] = 'required|string';
                 $rules['program_keahlian'] = 'required|string';
                 $rules['isi_laporan_pengaduan'] = 'required|string';
@@ -318,7 +345,10 @@ class Form extends Component
             Log::info('Validasi berhasil.', $validatedData);
         } catch (\Illuminate\Validation\ValidationException $e) {
             Log::error('Validasi gagal.', $e->errors());
-            session()->flash('error', 'Validasi gagal. Silakan periksa kembali input Anda.');
+            
+             // Redirect ke halaman failed-page jika validasi gagal
+            session()->flash('errors', $e->errors());
+            return redirect()->to('/failed-page');
             return;
         }        
         
@@ -390,8 +420,27 @@ class Form extends Component
 
         // Simpan data yang telah divalidasi
         try {
-            LaporanDumas::create($validatedData);
+            // Simpan laporan ke database
+            $laporan = LaporanDumas::create($validatedData);
             Log::info('Data berhasil disimpan ke database.', $validatedData);
+
+            // Dapatkan nomor pengaduan dari laporan yang baru disimpan
+            $nomorPengaduan = $laporan->id;
+
+            // Log sebelum memanggil metode sendWhatsAppNotification
+            Log::info('Calling sendWhatsAppNotification method.');
+
+            // Kirim notifikasi WhatsApp kepada pelapor
+            $this->sendWhatsAppNotificationToPelapor($this->nomor_telepon_peserta_diklat, $nomorPengaduan);
+
+            // Kirim notifikasi WhatsApp kepada admin
+            $this->sendWhatsAppNotificationToAdmin($nomorPengaduan, $this->nama_peserta_diklat, $this->klasifikasi_laporan);
+
+            // Log setelah memanggil metode sendWhatsAppNotification
+            Log::info('sendWhatsAppNotification method finished.');
+
+            // Jika sukses, arahkan ke success-page
+            return redirect()->to('/success-page');
 
             // Kirim event untuk memicu modal
             $this->dispatch('formSubmitted', ['pesan' => 'Terima kasih, laporan Anda telah kami terima. Silakan cek email untuk informasi lebih lanjut.']);
@@ -399,6 +448,10 @@ class Form extends Component
 
             session()->flash('message', 'Laporan berhasil disimpan.');
         } catch (\Exception $e) {
+
+            // Mengarahkan ke failed-page jika validasi gagal
+            return redirect()->to('/failed-page')->with('error', 'Validasi gagal. Silakan periksa kembali input Anda.');
+
             Log::error('Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
             session()->flash('error', 'Terjadi kesalahan saat menyimpan data.');
         }
@@ -407,6 +460,67 @@ class Form extends Component
     public function mount()
     {
         $this->programKeahlianOptions = ProgramKeahlian::all();
+    }
+
+    private function sendWhatsAppNotificationToPelapor($nomorTelepon, $nomorPengaduan)
+    {
+        Log::info('sendWhatsAppNotificationToPelapor method started.');
+
+        if (strpos($nomorTelepon, '+') !== 0) {
+            // Tambahkan +62 jika nomor dimulai dengan 0
+            $nomorTelepon = preg_replace('/^0/', '+62', $nomorTelepon);
+        }
+
+        $sid = env('TWILIO_SID');
+        $token = env('TWILIO_AUTH_TOKEN');
+        $twilio = new Client($sid, $token);
+
+        $message = "Terima kasih telah melapor! Pengaduan Anda dengan nomor #$nomorPengaduan telah kami terima dan akan segera ditindaklanjuti.";
+        $recipient = 'whatsapp:' . $nomorTelepon;
+
+        try {
+            $twilio->messages->create(
+                $recipient,
+                [
+                    'from' => env('TWILIO_WHATSAPP_NUMBER'),
+                    'body' => $message
+                ]
+            );
+            Log::info('WhatsApp notification sent successfully to pelapor at ' . $recipient); // Log jika berhasil
+        } catch (\Exception $e) {
+            Log::error('Error sending WhatsApp notification to pelapor: ' . $e->getMessage()); // Log jika ada error
+        }
+
+        Log::info('sendWhatsAppNotificationToPelapor method finished.');
+    }
+
+    private function sendWhatsAppNotificationToAdmin($nomorPengaduan, $namaPelapor, $jenisLaporan)
+    {
+        Log::info('sendWhatsAppNotificationToAdmin method started.');
+
+        $sid = env('TWILIO_SID');
+        $token = env('TWILIO_AUTH_TOKEN');
+        $twilio = new Client($sid, $token);
+
+        // Nomor WhatsApp admin yang menerima notifikasi
+        $adminPhoneNumber = 'whatsapp:+6281249256793';
+
+        $message = "Pengaduan baru diterima.\n\nKanal Pengaduan: SIGAP\nNomor Pengaduan: #$nomorPengaduan\nNama Pelapor: $namaPelapor\nJenis Laporan: $jenisLaporan\nSilakan segera ditindaklanjuti.";
+        
+        try {
+            $twilio->messages->create(
+                $adminPhoneNumber,
+                [
+                    'from' => env('TWILIO_WHATSAPP_NUMBER'),
+                    'body' => $message
+                ]
+            );
+            Log::info('WhatsApp notification sent successfully to admin at ' . $adminPhoneNumber); // Log jika berhasil
+        } catch (\Exception $e) {
+            Log::error('Error sending WhatsApp notification to admin: ' . $e->getMessage()); // Log jika ada error
+        }
+
+        Log::info('sendWhatsAppNotificationToAdmin method finished.');
     }
 
     public function render()

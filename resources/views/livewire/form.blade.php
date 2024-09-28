@@ -536,7 +536,7 @@
             </label>
             <div class="relative mt-3">
                 <input type="text" id="nama-peminta-saran" 
-                    wire:model.defer="nama_aduan_informasi" 
+                    wire:model.lazy="nama_aduan_informasi" 
                     class="block px-2.5 pb-2.5 pt-2 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 
                     appearance-none dark:text-white focus:outline-none focus:ring-0 peer 
                     @if($errors->has('nama_aduan_informasi')) 
@@ -546,7 +546,7 @@
                     @else 
                         border-gray-300 bg-transparent 
                     @endif" 
-                    placeholder=" " />
+                    placeholder=""/>
                 <label for="nama-peminta-saran" 
                     class="absolute text-sm 
                     @if(strlen($nama_aduan_informasi) > 0) 
@@ -568,7 +568,7 @@
                     <span class="font-medium">Perhatian!</span> {{ $errors->first('nama_aduan_informasi') }}
                 </p>
             @endif
-        </div>
+          </div>
         
           {{-- Nomor Telepon --}}
           <div class="sm:col-span-2 mt-6">
@@ -607,6 +607,18 @@
         <div class="col-span-full mt-4" id="upload-foto-section" wire:ignore>
           <label for="upload-foto" class="block text-sm font-medium leading-6 text-gray-900">Foto Sebagai Bukti Pendukung</label>
           @livewire('file-upload')
+          {{-- <span class="sr-only">Choose profile photo</span>
+              <input type="file" class="block w-full text-sm text-gray-500
+                file:me-4 file:py-2 file:px-4
+                file:rounded-lg file:border-0
+                file:text-sm file:font-semibold
+                file:bg-blue-600 file:text-white
+                hover:file:bg-blue-700
+                file:disabled:opacity-50 file:disabled:pointer-events-none
+                dark:text-neutral-500
+                dark:file:bg-blue-500
+                dark:hover:file:bg-blue-400
+              "> --}}
         </div>
 
         <div id="anonim-section" class="sm:col-span-2 mt-6 flex gap-4 items-center hidden" wire:ignore> 
@@ -628,7 +640,15 @@
 
       </div>
       <div class="mt-10">
-        <button wire:click.prevent="submit" type="submit" class="block w-full rounded-md bg-blue-bmti px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#60a5fa] transition ease-in-out duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ADUKAN!</button>
+        <button wire:click.prevent="submit" type="submit" class="block w-full rounded-md bg-blue-bmti px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#60a5fa] transition ease-in-out duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" 
+          wire:loading.attr="disabled">
+            <span wire:loading.remove>ADUKAN!</span>
+            <span wire:loading>
+                <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-white rounded-full dark:text-blue-500" role="status" aria-label="loading">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </span>
+        </button>
       </div>
     </form>
   </div>

@@ -7,6 +7,7 @@ use App\Models\LaporanBenturanKepentingan;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
+use Twilio\Rest\Client;
 
 class FormBenturanKepentingan extends Component
 {
@@ -109,9 +110,14 @@ class FormBenturanKepentingan extends Component
 
             Log::info('Data berhasil disimpan.');
 
+            // Jika sukses, arahkan ke success-page
+            return redirect()->to('/success-page');
+
             session()->flash('message', 'Laporan berhasil disimpan.');
         } catch (\Exception $e) {
             Log::error('Terjadi kesalahan saat menyimpan data: ' . $e->getMessage());
+            // Jika validasi gagal, arahkan ke failed-page
+            return redirect()->to('/failed-page');
             session()->flash('error', 'Terjadi kesalahan saat menyimpan data.');
         }
     }
